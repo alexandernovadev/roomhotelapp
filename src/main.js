@@ -7,12 +7,12 @@ import store from './store';
 Vue.config.productionTip = false;
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCfsNo8UySXjVBv83qzYYw538WsaHf-C6E",
-  authDomain: "roomsvue.firebaseapp.com",
-  projectId: "roomsvue",
-  storageBucket: "roomsvue.appspot.com",
-  messagingSenderId: "326652607881",
-  appId: "1:326652607881:web:6f079aff8dbbd5fa5b3558"
+  apiKey: 'AIzaSyCfsNo8UySXjVBv83qzYYw538WsaHf-C6E',
+  authDomain: 'roomsvue.firebaseapp.com',
+  projectId: 'roomsvue',
+  storageBucket: 'roomsvue.appspot.com',
+  messagingSenderId: '326652607881',
+  appId: '1:326652607881:web:6f079aff8dbbd5fa5b3558',
 };
   // Initialize Firebase WWTTF en main se puede traer un CICLO DE VIDA ??
 firebase.initializeApp(firebaseConfig);

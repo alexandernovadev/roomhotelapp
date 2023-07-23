@@ -56,17 +56,17 @@
 </template>
 
 <script>
-import PageLayout from "@/layouts/PageLayout.vue";
+import PageLayout from '@/layouts/PageLayout.vue';
 
 export default {
-  name: "CreateHousePage",
+  name: 'CreateHousePage',
   data() {
     return {
       publication: {
-        title: "",
-        description: "",
-        featuredImage: ""
-      }
+        title: '',
+        description: '',
+        featuredImage: '',
+      },
     };
   },
   methods: {
@@ -76,16 +76,16 @@ export default {
         title,
         description,
         featured_image: featuredImage,
-        publishedAt: Date.now()
+        publishedAt: Date.now(),
       };
 
-      this.$store.dispatch("CREATE_ROOM", room).then(() => {
-        this.$router.push({ name: "SearchPage" });
+      this.$store.dispatch('CREATE_ROOM', room).then(() => {
+        this.$router.push({ name: 'SearchPage' });
       });
-    }
+    },
   },
   components: {
-    PageLayout
-  }
+    PageLayout,
+  },
 };
 </script>

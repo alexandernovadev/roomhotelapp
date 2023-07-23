@@ -55,7 +55,7 @@ export default new Vuex.Store({
         return Promise.resolve(state.rooms[roomId]);
       });
     },
-    
+
     FETCH_ROOMS: ({ state, commit }, limit) => new Promise((resolve) => {
       let instance = firebase.database().ref('rooms');
       if (limit) {

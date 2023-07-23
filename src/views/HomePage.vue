@@ -4,7 +4,7 @@
       <h1 class="text-3xl font-light text-grey-darkest mb-3">Recommended</h1>
       <div class="section">
         <!-- Here
-  
+
         <tiny-slider>
           <div class="slider-item">1</div>
           <div class="slider-item">2</div>
@@ -46,22 +46,22 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import DefaultLayout from "@/layouts/DefaultLayout.vue";
-import TinySlider from "@/components/TinySlider.vue";
+import { mapGetters } from 'vuex';
+import DefaultLayout from '@/layouts/DefaultLayout.vue';
+import TinySlider from '@/components/TinySlider.vue';
 
 export default {
-  name: "HomePage",
+  name: 'HomePage',
   beforeCreate() {
-    this.$store.dispatch("FETCH_ROOMS", 12);
+    this.$store.dispatch('FETCH_ROOMS', 12);
   },
   computed: {
-    ...mapGetters(["rooms"])
+    ...mapGetters(['rooms']),
   },
   components: {
     DefaultLayout,
-    TinySlider
-  }
+    TinySlider,
+  },
 };
 </script>
 

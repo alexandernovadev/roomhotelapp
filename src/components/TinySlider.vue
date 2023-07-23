@@ -11,8 +11,8 @@ import 'tiny-slider/dist/tiny-slider.css';
 export default {
   name: 'TinySlider',
   data() {
-      // El dolar al principio indica que no va a hacer reactivo 
-      // NO OBSERVABLE
+    // El dolar al principio indica que no va a hacer reactivo
+    // NO OBSERVABLE
     return {
       $slider: null,
     };

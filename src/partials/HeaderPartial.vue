@@ -71,28 +71,29 @@
 </template>
 
 <script>
-import CurrentUser from "../components/CurrentUser.vue";
+import CurrentUser from '../components/CurrentUser.vue';
+
 export default {
-  name: "HeaderPartial",
+  name: 'HeaderPartial',
   methods: {
     getLogin() {
-      this.$store.dispatch("TOGGLE_MODAL_STATE", {
-        name: "login",
-        value: true
+      this.$store.dispatch('TOGGLE_MODAL_STATE', {
+        name: 'login',
+        value: true,
       });
     },
     signUp() {
-      this.$store.dispatch("TOGGLE_MODAL_STATE", {
-        name: "register",
-        value: true
+      this.$store.dispatch('TOGGLE_MODAL_STATE', {
+        name: 'register',
+        value: true,
       });
     },
     logOut() {
-      this.$store.dispatch("LOG_OUT");
-    }
+      this.$store.dispatch('LOG_OUT');
+    },
   },
   components: {
-    CurrentUser
-  }
+    CurrentUser,
+  },
 };
 </script>

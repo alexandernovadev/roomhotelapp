@@ -1,15 +1,15 @@
 <script>
 export default {
-  name: "ModalJsx",
+  name: 'ModalJsx',
   props: {
     show: {
       type: Boolean,
-      default: false
+      default: false,
     },
     message: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   render() {
     return this.show ? (
@@ -22,11 +22,11 @@ export default {
   },
   methods: {
     clickCancelHandler() {
-      console.log("Click on Cancel");
+      console.log('Click on Cancel');
     },
     clickOkHandler() {
-      console.log("Click on Ok");
-    }
-  }
+      console.log('Click on Ok');
+    },
+  },
 };
 </script>
