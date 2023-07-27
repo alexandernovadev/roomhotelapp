@@ -5,7 +5,7 @@
         <form class="form">
           <div class="form__field relative">
             <i class="input-icon material-icons absolute text-grey-darker">search</i>
-            <input class="input__search" id="where" type="text" placeholder="New York">
+            <input class="input__search" id="where" type="text" placeholder="New York" />
           </div>
         </form>
       </div>
@@ -17,10 +17,10 @@
           <aside class="profile__aside px-3">
             <div class="profile__card">
               <div class="profile__thumbnail">
-                <img class="profile__image w-full" :src="profile.avatar">
+                <img class="profile__image w-full" :src="profile.avatar" />
               </div>
               <span>
-                <b> {{userRoomsCounts}} rooms</b>
+                <b> {{ userRoomsCounts }} rooms</b>
               </span>
             </div>
           </aside>
@@ -29,43 +29,53 @@
               <div class="mb-4">
                 <label class="input__label" for="name">Name</label>
                 <div class="form__field relative">
-                  <input v-model="profile.name" class="input__field" id="name" type="text"
-                   placeholder="Bruce Wayne">
+                  <input
+                    v-model="profile.name"
+                    class="input__field"
+                    id="name"
+                    type="text"
+                    placeholder="Bruce Wayne"
+                  />
                 </div>
               </div>
               <div class="mb-4">
                 <label class="input__label" for="username">Username</label>
                 <div class="form__field relative">
-                  <input v-model="profile.username" class="input__field" id="username"
-                  type="text" placeholder="bruce.wayne">
+                  <input
+                    v-model="profile.username"
+                    class="input__field"
+                    id="username"
+                    type="text"
+                    placeholder="bruce.wayne"
+                  />
                 </div>
               </div>
               <div class="mb-4">
-                <label
-                  class="input__label"
-                  for="avatar">Avatar</label>
+                <label class="input__label" for="avatar">Avatar</label>
                 <div class="form__field relative">
-                  <input v-model="profile.avatar" class="input__field" id="avatar" type="text"
-                   placeholder="https://avatars1.githubusercontent.com/u/9919?s=500&v=4">
+                  <input
+                    v-model="profile.avatar"
+                    class="input__field"
+                    id="avatar"
+                    type="text"
+                    placeholder="https://avatars1.githubusercontent.com/u/9919?s=500&v=4"
+                  />
                 </div>
               </div>
               <div class="mb-4">
-                <label
-                  class="input__label"
-                  for="email">Email</label>
+                <label class="input__label" for="email">Email</label>
                 <div class="form__field relative">
                   <input
                     class="input__field"
                     id="email"
                     v-model="profile.email"
                     type="text"
-                    placeholder="bruce.wayne@imnotbatman.org">
+                    placeholder="bruce.wayne@imnotbatman.org"
+                  />
                 </div>
               </div>
               <div class="mb-4">
-                <label
-                  class="input__label"
-                  for="email">Bio</label>
+                <label class="input__label" for="email">Bio</label>
                 <div class="form__field relative">
                   <textarea
                     class="input__field"
@@ -73,16 +83,13 @@
                     v-model="profile.bio"
                     id="email"
                     type="text"
-                    placeholder="bruce.wayne@imnotbatman.org"></textarea>
+                    placeholder="bruce.wayne@imnotbatman.org"
+                  ></textarea>
                 </div>
               </div>
               <div class="flex items-center w-auto mb-4">
-                <button
-                  class="btn mr-3">
-                  Cancel
-                </button>
-                <button
-                  class="bg-yellow-dark text-yellow-darker font-semibold py-2 px-4 rounded">
+                <button class="btn mr-3">Cancel</button>
+                <button class="bg-yellow-dark text-yellow-darker font-semibold py-2 px-4 rounded">
                   Save
                 </button>
               </div>
@@ -95,8 +102,8 @@
 </template>
 
 <script>
-import PageLayout from '@/layouts/PageLayout.vue';
-import { mapGetters } from 'vuex';
+import PageLayout from '@/layouts/PageLayout.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'ProfilePage',
@@ -109,23 +116,23 @@ export default {
         email: '',
         bio: '',
       },
-    };
+    }
   },
   mounted() {
-    this.profile = this.user;
+    this.profile = this.user
   },
   computed: {
     ...mapGetters({
       user: 'authUser',
     }),
     userRoomsCounts() {
-      return this.$store.getters.userRoomsCount(this.user['.key']);
+      return this.$store.getters.userRoomsCount(this.user['.key'])
     },
   },
   components: {
     PageLayout,
   },
-};
+}
 </script>
 <style>
 .section__profile .grid-container {

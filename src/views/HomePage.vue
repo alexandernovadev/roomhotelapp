@@ -24,7 +24,7 @@
           </div>
           <div class="house__content bg-white p-3 border rounded">
             <div class="house__type font-semibold text-xs uppercase text-teal-dark mb-1">
-              {{ i.type }} {{ i[".key"] }}
+              {{ i.type }} {{ i['.key'] }}
             </div>
             <div class="house__title font-bold mb-2">{{ i.description.slice(0, 30) }}</div>
             <div class="house__price text-xs">
@@ -46,23 +46,23 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import DefaultLayout from '@/layouts/DefaultLayout.vue';
-import TinySlider from '@/components/TinySlider.vue';
+import { mapGetters } from 'vuex'
+import DefaultLayout from '@/layouts/DefaultLayout.vue'
+// import TinySlider from '@/components/TinySlider.vue';
 
 export default {
   name: 'HomePage',
   beforeCreate() {
-    this.$store.dispatch('FETCH_ROOMS', 12);
+    this.$store.dispatch('FETCH_ROOMS', 12)
   },
   computed: {
     ...mapGetters(['rooms']),
   },
   components: {
     DefaultLayout,
-    TinySlider,
+    // TinySlider,
   },
-};
+}
 </script>
 
 <style lang="css">
@@ -82,7 +82,7 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-@media(max-width: 992px) {
+@media (max-width: 992px) {
   .house__card > .house__thumbnail {
     height: 150px;
   }
@@ -91,7 +91,7 @@ export default {
   }
 }
 
-@media(max-width: 576px) {
+@media (max-width: 576px) {
   .section__explore {
     grid-template-columns: repeat(1, 1fr);
   }

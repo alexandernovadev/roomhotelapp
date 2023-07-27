@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import PageLayout from '@/layouts/PageLayout.vue';
+import PageLayout from '@/layouts/PageLayout.vue'
 
 export default {
   name: 'CreateHousePage',
@@ -67,25 +67,25 @@ export default {
         description: '',
         featuredImage: '',
       },
-    };
+    }
   },
   methods: {
     save() {
-      const { title, description, featuredImage } = this.publication;
+      const { title, description, featuredImage } = this.publication
       const room = {
         title,
         description,
         featured_image: featuredImage,
         publishedAt: Date.now(),
-      };
+      }
 
       this.$store.dispatch('CREATE_ROOM', room).then(() => {
-        this.$router.push({ name: 'SearchPage' });
-      });
+        this.$router.push({ name: 'SearchPage' })
+      })
     },
   },
   components: {
     PageLayout,
   },
-};
+}
 </script>

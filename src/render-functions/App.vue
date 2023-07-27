@@ -6,24 +6,24 @@
 </template>
 
 <script>
-import ModalCreateElement from './ModalCreateElement.vue';
+import ModalCreateElement from './ModalCreateElement.vue'
 
 export default {
   name: 'App',
   data() {
     return {
       show: false,
-    };
+    }
   },
   components: {
     ModalCreateElement,
   },
   methods: {
     toggleHandler() {
-      this.show = !this.show;
+      this.show = !this.show
     },
   },
-};
+}
 </script>
 
 <style>
@@ -33,7 +33,7 @@ body {
 .modal {
   position: absolute;
   top: 50%;
-  left:50%;
+  left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
   width: 250px;

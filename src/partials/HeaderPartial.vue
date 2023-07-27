@@ -11,7 +11,6 @@
           </router-link>
         </div>
         <div class="flex items-center w-auto">
-
           <router-link
             :to="{ name: 'CreateHomePage' }"
             class="no-underline mr-2 flex items-center text-grey-darkest"
@@ -71,7 +70,7 @@
 </template>
 
 <script>
-import CurrentUser from '../components/CurrentUser.vue';
+import CurrentUser from '../components/CurrentUser.vue'
 
 export default {
   name: 'HeaderPartial',
@@ -80,20 +79,20 @@ export default {
       this.$store.dispatch('TOGGLE_MODAL_STATE', {
         name: 'login',
         value: true,
-      });
+      })
     },
     signUp() {
       this.$store.dispatch('TOGGLE_MODAL_STATE', {
         name: 'register',
         value: true,
-      });
+      })
     },
     logOut() {
-      this.$store.dispatch('LOG_OUT');
+      this.$store.dispatch('LOG_OUT')
     },
   },
   components: {
     CurrentUser,
   },
-};
+}
 </script>

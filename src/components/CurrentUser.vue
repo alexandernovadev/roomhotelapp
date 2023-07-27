@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'CurrentUser',
@@ -14,5 +14,5 @@ export default {
       user: 'authUser',
     }),
   },
-};
+}
 </script>

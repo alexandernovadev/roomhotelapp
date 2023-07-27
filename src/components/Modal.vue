@@ -8,26 +8,28 @@ export default {
     },
   },
   render() {
-    return (this.show) ? <div class="modal-wrapper">
-      <div class="modal">
-        <div class="modal-head text-right pb-2">
-          <a href="#" onClick={this.onClose}>
-            <i class="material-icons modal-close-icon">close</i>
-          </a>
-        </div>
-        <div class="modal-content">
-          {/* Todo el contenido del padrea se pone aqui */}
-          {this.$slots.default}
+    return this.show ? (
+      <div class="modal-wrapper">
+        <div class="modal">
+          <div class="modal-head text-right pb-2">
+            <a href="#" onClick={this.onClose}>
+              <i class="material-icons modal-close-icon">close</i>
+            </a>
+          </div>
+          <div class="modal-content">
+            {/* Todo el contenido del padrea se pone aqui */}
+            {this.$slots.default}
+          </div>
         </div>
       </div>
-    </div> : null;
+    ) : null
   },
   methods: {
     onClose() {
-      this.$emit('close-modal');
+      this.$emit('close-modal')
     },
   },
-};
+}
 </script>
 
 <style scoped>
@@ -40,11 +42,11 @@ export default {
   z-index: 2000;
   @apply absolute bg-white p-4 shadow-lg rounded;
 }
- .modal > .modal-head {
+.modal > .modal-head {
   @apply relative;
 }
- .modal-wrapper::after {
-  content: "";
+.modal-wrapper::after {
+  content: '';
   position: fixed;
   top: 0;
   left: 0;

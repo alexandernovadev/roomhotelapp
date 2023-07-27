@@ -20,7 +20,7 @@
             </div>
             <div class="house__content bg-white p-3 border rounded">
               <div class="house__type font-semibold text-xs uppercase text-teal-dark mb-1">
-                {{ i.type }} {{ i[".key"] }}
+                {{ i.type }} {{ i['.key'] }}
               </div>
               <div class="house__title font-bold mb-2">{{ i.description.slice(0, 30) }}</div>
               <div class="house__price text-xs">
@@ -35,14 +35,14 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import PageLayout from '@/layouts/PageLayout.vue';
+import { mapGetters } from 'vuex'
+import PageLayout from '@/layouts/PageLayout.vue'
 
 export default {
   name: 'SearchPage',
 
   beforeCreate() {
-    this.$store.dispatch('FETCH_ROOMS');
+    this.$store.dispatch('FETCH_ROOMS')
   },
   computed: {
     ...mapGetters(['rooms']),
@@ -50,7 +50,7 @@ export default {
   components: {
     PageLayout,
   },
-};
+}
 </script>
 
 <style>

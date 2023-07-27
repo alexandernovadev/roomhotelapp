@@ -1,30 +1,30 @@
 <template>
-  <div class='default-layout'>
+  <div class="default-layout">
     <header-partial></header-partial>
-    <section class='section__hero py-6 bg-black bg-cover bg-center'>
-      <div class='container'>
-        <div class='section__form bg-white p-4 w-1/2 shadow-md'>
-          <h1 class='mb-2 text-4xl font-light text-grey-darkest'>
+    <section class="section__hero py-6 bg-black bg-cover bg-center">
+      <div class="container">
+        <div class="section__form bg-white p-4 w-1/2 shadow-md">
+          <h1 class="mb-2 text-4xl font-light text-grey-darkest">
             Find homes on Adeventures Rooms
           </h1>
-          <h2 class='mb-6 text-base text-grey-dark font-normal'>
+          <h2 class="mb-6 text-base text-grey-dark font-normal">
             Discover entire homes and private rooms perfect for any trip.
           </h2>
-          <form class='form__search'>
-            <div class='mb-4'>
-              <label class='input__label' for='where'>Where</label>
-              <div class='form__field relative'>
-                <i class='input-icon material-icons absolute text-grey-darker'>search</i>
+          <form class="form__search">
+            <div class="mb-4">
+              <label class="input__label" for="where">Where</label>
+              <div class="form__field relative">
+                <i class="input-icon material-icons absolute text-grey-darker">search</i>
                 <input
-                  class='input__search'
-                  id='where'
-                  type='text'
-                  placeholder='Mexico City, Mexico'
+                  class="input__search"
+                  id="where"
+                  type="text"
+                  placeholder="Mexico City, Mexico"
                 />
               </div>
             </div>
             <button
-              class='px-2 py-4 bg-yellow-dark font-semibold w-full rounded text-yellow-darker'
+              class="px-2 py-4 bg-yellow-dark font-semibold w-full rounded text-yellow-darker"
             >
               Search
             </button>
@@ -32,7 +32,7 @@
         </div>
       </div>
     </section>
-    <main class='main'>
+    <main class="main">
       <slot></slot>
     </main>
     <footer-partial></footer-partial>
@@ -41,9 +41,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import HeaderPartial from '@/partials/HeaderPartial.vue';
-import FooterPartial from '@/partials/FooterPartial.vue';
+import { mapGetters } from 'vuex'
+import HeaderPartial from '@/partials/HeaderPartial.vue'
+import FooterPartial from '@/partials/FooterPartial.vue'
 // import Modal from '@/components/Modal.vue';
 
 export default {
@@ -60,7 +60,7 @@ export default {
         name: '',
         password: '',
       },
-    };
+    }
   },
   computed: {
     ...mapGetters(['modals']),
@@ -74,18 +74,18 @@ export default {
       this.$store.dispatch('TOGGLE_MODAL_STATE', {
         name: 'login',
         value: false,
-      });
+      })
     },
     closeModalRegister() {
       this.$store.dispatch('TOGGLE_MODAL_STATE', {
         name: 'register',
         value: false,
-      });
+      })
     },
     registerHandlerSubmit() {
       this.$store.dispatch('CREATE_USER', this.formRegister).then(() => {
-        this.closeModalRegister();
-      });
+        this.closeModalRegister()
+      })
     },
     loginHandlerSubmit() {
       this.$store
@@ -94,11 +94,11 @@ export default {
           password: this.formLogin.password,
         })
         .then(() => {
-          this.closeModal();
-        });
+          this.closeModal()
+        })
     },
   },
-};
+}
 </script>
 
 <style>

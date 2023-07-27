@@ -12,19 +12,19 @@
           <ul class="list-reset">
             <li class="mb-2 text-lg text-grey-darkest font-semibold">Product</li>
             <li class="mb-2">
-              <a
-                class="no-underline text-grey-darker hover:text-grey-darkest"
-                href="#">The solution</a>
+              <a class="no-underline text-grey-darker hover:text-grey-darkest" href="#"
+                >The solution</a
+              >
             </li>
             <li class="mb-2">
-              <a
-                class="no-underline text-grey-darker hover:text-grey-darkest"
-                href="#">Tools overview</a>
+              <a class="no-underline text-grey-darker hover:text-grey-darkest" href="#"
+                >Tools overview</a
+              >
             </li>
             <li class="mb-2">
-              <a
-                class="no-underline text-grey-darker hover:text-grey-darkest"
-                href="#">Press kit</a>
+              <a class="no-underline text-grey-darker hover:text-grey-darkest" href="#"
+                >Press kit</a
+              >
             </li>
           </ul>
         </div>
@@ -32,29 +32,23 @@
           <ul class="list-reset">
             <li class="mb-2 text-lg text-grey-darkest font-semibold">More info</li>
             <li class="mb-2">
-              <a
-                class="no-underline text-grey-darker hover:text-grey-darkes"
-                href="#">Careers</a>
+              <a class="no-underline text-grey-darker hover:text-grey-darkes" href="#">Careers</a>
             </li>
             <li class="mb-2">
-              <a
-                class="no-underline text-grey-darker hover:text-grey-darkes"
-                href="#">Contact</a>
+              <a class="no-underline text-grey-darker hover:text-grey-darkes" href="#">Contact</a>
             </li>
             <li class="mb-2">
-              <a
-                class="no-underline text-grey-darker hover:text-grey-darkes"
-                href="#">Blog</a>
+              <a class="no-underline text-grey-darker hover:text-grey-darkes" href="#">Blog</a>
             </li>
             <li class="mb-2">
-              <a
-                class="no-underline text-grey-darker hover:text-grey-darkest"
-                href="#">Terms of Service</a>
+              <a class="no-underline text-grey-darker hover:text-grey-darkest" href="#"
+                >Terms of Service</a
+              >
             </li>
             <li class="mb-2">
-              <a
-                class="no-underline text-grey-darker hover:text-grey-darkest"
-                href="#">Privacy and Cookie Policy</a>
+              <a class="no-underline text-grey-darker hover:text-grey-darkest" href="#"
+                >Privacy and Cookie Policy</a
+              >
             </li>
           </ul>
         </div>
@@ -69,20 +63,20 @@
 <script>
 export default {
   name: 'FooterPartial',
-};
+}
 </script>
 
 <style>
-  .footer .grid-container {
-    grid-template-columns: 2fr 1fr 1fr;
-  }
+.footer .grid-container {
+  grid-template-columns: 2fr 1fr 1fr;
+}
 
-  @media(max-width: 576px) {
-    .footer .grid-container {
-      grid-template-columns: 1fr;
-    }
-    .footer {
-      @apply text-center;
-    }
+@media (max-width: 576px) {
+  .footer .grid-container {
+    grid-template-columns: 1fr;
   }
+  .footer {
+    @apply text-center;
+  }
+}
 </style>

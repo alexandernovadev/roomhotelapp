@@ -13,16 +13,15 @@ export default {
   data() {
     return {
       show: false,
-    };
+    }
   },
-  components: {
-  },
+  components: {},
   methods: {
     handleToggle() {
-      this.show = !this.show;
+      this.show = !this.show
     },
   },
-};
+}
 </script>
 <style lang="postcss" src="./assets/tailwind.postcss"></style>
 <style lang="css" src="./assets/main.css"></style>

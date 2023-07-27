@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import { tns } from 'tiny-slider/src/tiny-slider';
-import 'tiny-slider/dist/tiny-slider.css';
+import { tns } from 'tiny-slider/src/tiny-slider'
+import 'tiny-slider/dist/tiny-slider.css'
 
 export default {
   name: 'TinySlider',
@@ -15,10 +15,10 @@ export default {
     // NO OBSERVABLE
     return {
       $slider: null,
-    };
+    }
   },
   mounted() {
-    this.init();
+    this.init()
   },
   methods: {
     init() {
@@ -26,14 +26,14 @@ export default {
       const settings = {
         container: this.$el,
         mode: 'gallery',
-      };
-      this.$slider = tns(settings);
+      }
+      this.$slider = tns(settings)
     },
   },
   beforeDestroy() {
     if (this.$slider) {
-      this.$slider.destroy();
+      this.$slider.destroy()
     }
   },
-};
+}
 </script>

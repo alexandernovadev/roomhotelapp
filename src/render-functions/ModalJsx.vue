@@ -18,15 +18,15 @@ export default {
         <button onClick={this.clickCancelHandler}>Cancel</button>
         <button onClick={this.clickOkHandler}>Ok</button>
       </div>
-    ) : null;
+    ) : null
   },
   methods: {
     clickCancelHandler() {
-      console.log('Click on Cancel');
+      console.log('Click on Cancel')
     },
     clickOkHandler() {
-      console.log('Click on Ok');
+      console.log('Click on Ok')
     },
   },
-};
+}
 </script>
