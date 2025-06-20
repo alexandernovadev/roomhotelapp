@@ -11,12 +11,9 @@
     >
       <div
         v-if="isOpen"
-        class="fixed inset-0 z-50 flex items-center justify-center"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50"
         @click="handleOverlayClick"
       >
-        <!-- Debug log -->
-        <div v-if="false">{{ console.log('Modal isOpen:', isOpen) }}</div>
-
         <!-- Backdrop con blur -->
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
 
@@ -69,7 +66,7 @@
               <button
                 v-if="showCloseButton"
                 @click="closeModal"
-                class="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors duration-200"
+                class="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-full transition-colors duration-200"
                 :aria-label="closeButtonLabel"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -86,7 +83,7 @@
             <!-- Footer del modal -->
             <div
               v-if="$slots.footer || showDefaultFooter"
-              class="flex items-center justify-end space-x-3 p-6 border-t border-gray-100 bg-gray-50"
+              class="flex items-center justify-end space-x-3 p-6 border-t border-gray-50"
             >
               <slot name="footer">
                 <Button

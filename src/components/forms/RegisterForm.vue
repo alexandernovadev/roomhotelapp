@@ -123,28 +123,20 @@ export default {
     }
 
     const handleSubmit = async () => {
-      console.log('RegisterForm: handleSubmit called')
-      console.log('RegisterForm: form data:', form)
-
       // Validar que las contraseñas coincidan
       if (form.password !== form.confirmPassword) {
-        console.log('RegisterForm: passwords do not match')
         setError('confirmPassword', 'Las contraseñas no coinciden')
         return
       }
 
       // Validar que se acepten los términos
       if (!form.terms) {
-        console.log('RegisterForm: terms not accepted')
         setError('terms', 'Debes aceptar los términos y condiciones')
         return
       }
 
       if (validateForm(validationRules)) {
-        console.log('RegisterForm: validation passed, emitting submit')
         emit('submit', { ...form })
-      } else {
-        console.log('RegisterForm: validation failed')
       }
     }
 

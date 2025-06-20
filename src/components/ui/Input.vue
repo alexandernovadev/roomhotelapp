@@ -2,7 +2,7 @@
   <div class="w-full">
     <label
       v-if="label"
-      :for="id"
+      :for="uniqueId"
       class="block text-sm font-medium text-gray-700 mb-1"
     >
       {{ label }}
@@ -10,7 +10,7 @@
     </label>
     <div class="relative">
       <input
-        :id="id"
+        :id="uniqueId"
         :type="type"
         :value="modelValue"
         :placeholder="placeholder"
@@ -118,6 +118,12 @@ export default {
   },
   emits: ['update:modelValue', 'blur', 'focus'],
   setup(props, { emit }) {
+    // Generar ID único si no se proporciona uno
+    const uniqueId = computed(() => {
+      if (props.id) return props.id
+      return `input-${Math.random().toString(36).substr(2, 9)}`
+    })
+
     const inputClasses = computed(() => {
       const baseClasses = 'w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-0 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed'
 
@@ -150,6 +156,7 @@ export default {
     }
 
     return {
+      uniqueId,
       inputClasses,
       handleInput,
       handleBlur,

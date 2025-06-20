@@ -7,20 +7,12 @@
           @open-login="openLoginModal"
           @open-register="openRegisterModal"
         />
-
-        <!-- Test button for debugging -->
-        <button
-          @click="openLoginModal"
-          class="ml-4 px-4 py-2 bg-red-500 text-white rounded"
-        >
-          Test Login Modal
-        </button>
       </div>
     </div>
 
     <!-- Modal de Login -->
     <Modal
-      v-model="loginModal.isOpen"
+      v-model="loginModal.isOpen.value"
       title="Iniciar Sesión"
       subtitle="Ingresa tus credenciales"
       size="md"
@@ -35,7 +27,7 @@
 
     <!-- Modal de Registro -->
     <Modal
-      v-model="registerModal.isOpen"
+      v-model="registerModal.isOpen.value"
       title="Crear Cuenta"
       subtitle="Completa el formulario para registrarte"
       size="lg"
@@ -81,30 +73,25 @@ export default {
     const isRegistering = ref(false)
 
     const openLoginModal = () => {
-      console.log('openLoginModal called')
       loginModal.openModal()
-      console.log('loginModal.isOpen:', loginModal.isOpen.value)
     }
 
     const openRegisterModal = () => {
-      console.log('openRegisterModal called')
       registerModal.openModal()
-      console.log('registerModal.isOpen:', registerModal.isOpen.value)
     }
 
-    const handleLoginSubmit = async () => {
-      if (!loginFormRef.value) return
+    const handleLoginSubmit = async (formData) => {
+      if (!formData) return
 
       isLoggingIn.value = true
       try {
-        const formData = loginFormRef.value.form
         await login({
           email: formData.email,
           password: formData.password
         })
         loginModal.closeModal()
       } catch (error) {
-        console.error('Login error:', error)
+        console.error('HeaderPartial: Login error:', error)
       } finally {
         isLoggingIn.value = false
       }
@@ -114,20 +101,12 @@ export default {
       loginModal.closeModal()
     }
 
-    const handleRegisterSubmit = async () => {
-      console.log('HeaderPartial: handleRegisterSubmit called')
-      if (!registerFormRef.value) {
-        console.log('HeaderPartial: registerFormRef is null')
-        return
-      }
+    const handleRegisterSubmit = async (formData) => {
+      if (!formData) return
 
       isRegistering.value = true
-      console.log('HeaderPartial: isRegistering set to true')
 
       try {
-        const formData = registerFormRef.value.form
-        console.log('HeaderPartial: formData:', formData)
-
         await register({
           email: formData.email,
           name: formData.name,
@@ -135,12 +114,10 @@ export default {
           phone: formData.phone
         })
 
-        console.log('HeaderPartial: register successful, closing modal')
         registerModal.closeModal()
       } catch (error) {
         console.error('HeaderPartial: Register error:', error)
       } finally {
-        console.log('HeaderPartial: isRegistering set to false')
         isRegistering.value = false
       }
     }

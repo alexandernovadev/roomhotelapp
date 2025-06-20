@@ -60,12 +60,10 @@ export default {
   emits: ['open-login', 'open-register'],
   setup(props, { emit }) {
     const openLoginModal = () => {
-      console.log('Navigation: openLoginModal clicked')
       emit('open-login')
     }
 
     const openRegisterModal = () => {
-      console.log('Navigation: openRegisterModal clicked')
       emit('open-register')
     }
 
