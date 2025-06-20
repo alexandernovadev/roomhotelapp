@@ -17,7 +17,7 @@
               <div class="relative">
                 <i class="material-icons absolute top-2 left-2 text-gray-600">search</i>
                 <input
-                  class="w-full pl-10"
+                  class="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:border-yellow-500"
                   id="where"
                   type="text"
                   placeholder="Mexico City, Mexico"
