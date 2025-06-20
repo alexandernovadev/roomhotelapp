@@ -83,15 +83,23 @@
     </div>
 
     <!-- Copyright Section -->
-    <div class="border-t border-cyan-500 bg-black">
+    <div class="border-t border-cyan-500 bg-gray-800">
       <div class="container mx-auto px-4 py-4">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <p class="text-white text-sm mb-2 md:mb-0">
             © {{ currentYear }} Adventures App. All rights reserved.
           </p>
-          <p class="text-white text-sm">
-            Built with <span class="text-yellow-400 font-semibold">Vue.js</span> and <span class="text-yellow-400 font-semibold">Firebase</span>
-          </p>
+          <div class="flex items-center space-x-4">
+            <span class="text-white text-sm">Built with:</span>
+            <div class="flex items-center space-x-3">
+              <i class="devicon-vuejs-plain colored text-2xl" title="Vue.js"></i>
+              <i class="devicon-firebase-plain colored text-2xl" title="Firebase"></i>
+              <i class="devicon-tailwindcss-plain colored text-2xl" title="Tailwind CSS"></i>
+              <i class="devicon-vitejs-plain colored text-2xl" title="Vite"></i>
+              <i class="devicon-postcss-plain colored text-2xl" title="PostCSS"></i>
+              <i class="devicon-nodejs-plain colored text-2xl" title="Node.js"></i>
+            </div>
+          </div>
         </div>
       </div>
     </div>
