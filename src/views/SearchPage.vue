@@ -1,11 +1,16 @@
 <template>
   <page-layout>
-    <section class="py-4 bg-teal-700">
-      <div class="container mx-auto">
-        <form class="form">
-          <div class="form__field relative">
-            <i class="input-icon material-icons absolute text-gray-500">search</i>
-            <input class="input__search" id="where" type="text" placeholder="Mexico City, Mexico" />
+    <section class="py-6 bg-teal-700">
+      <div class="container mx-auto px-4">
+        <form class="max-w-md mx-auto">
+          <div class="relative">
+            <i class="material-icons absolute top-3 left-3 text-gray-400">search</i>
+            <input
+              class="w-full py-3 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+              id="where"
+              type="text"
+              placeholder="Mexico City, Mexico"
+            />
           </div>
         </form>
       </div>
@@ -13,18 +18,26 @@
     <section class="section__items py-8">
       <div class="container mx-auto">
         <h1 class="text-3xl font-light mb-3">Explore all</h1>
-        <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-          <div class="house__card mb-3" v-for="room in rooms" :key="room['.key']">
-            <div class="house__thumbnail relative overflow-hidden h-48">
-              <img class="house__image absolute w-full" width="250" :src="room.featured_image" />
-            </div>
-            <div class="house__content bg-white p-3 border rounded">
-              <div class="house__type font-semibold text-xs uppercase text-teal-600 mb-1">
-                {{ room.type }}
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-8">
+          <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden" v-for="room in rooms" :key="room['.key']">
+            <div class="relative h-48 overflow-hidden">
+              <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" :src="room.featured_image" :alt="room.title" />
+              <div class="absolute top-3 left-3">
+                <span class="bg-white bg-opacity-90 text-teal-600 text-xs font-semibold px-2 py-1 rounded-full">
+                  {{ room.type }}
+                </span>
               </div>
-              <div class="house__title font-bold mb-2">{{ room.title }}</div>
-              <div class="house__price text-xs">
-                <span class="font-bold">${{ room.price }}</span> per night
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-800 text-lg mb-2 line-clamp-2">{{ room.title }}</h3>
+              <div class="flex items-center justify-between">
+                <div class="text-sm text-gray-600">
+                  <span class="font-bold text-lg text-gray-900">${{ room.price }}</span>
+                  <span class="text-gray-500"> / night</span>
+                </div>
+                <button class="bg-teal-500 hover:bg-teal-600 text-white text-xs font-medium px-3 py-1 rounded-full transition-colors duration-200">
+                  View
+                </button>
               </div>
             </div>
           </div>

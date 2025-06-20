@@ -6,7 +6,7 @@
       <div class="container mx-auto px-4">
         <div class="bg-white p-6 w-full max-w-md mx-auto shadow-lg rounded-lg">
           <h1 class="mb-3 text-3xl font-light text-gray-800">
-            Find homes on Adeventures Rooms
+            Find homes on Adventures App
           </h1>
           <h2 class="mb-6 text-sm text-gray-600 font-normal">
             Discover entire homes and private rooms perfect for any trip.

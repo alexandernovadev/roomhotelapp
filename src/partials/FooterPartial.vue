@@ -4,7 +4,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <!-- Brand Section -->
         <div class="lg:col-span-2">
-          <h3 class="text-2xl font-bold mb-4">Adventures Rooms</h3>
+          <h3 class="text-2xl font-bold mb-4">Adventures App</h3>
           <p class="text-teal-100 text-sm leading-relaxed mb-6">
             Discover entire homes and private rooms perfect for any trip. Experience unique accommodations around the world.
           </p>
@@ -87,7 +87,7 @@
       <div class="container mx-auto px-4 py-4">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <p class="text-white text-sm mb-2 md:mb-0">
-            © 2024 Adventures Rooms. All rights reserved.
+            © {{ currentYear }} Adventures App. All rights reserved.
           </p>
           <p class="text-white text-sm">
             Built with <span class="text-yellow-400 font-semibold">Vue.js</span> and <span class="text-yellow-400 font-semibold">Firebase</span>
@@ -99,8 +99,17 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+
 export default {
   name: 'FooterPartial',
+  setup() {
+    const currentYear = computed(() => new Date().getFullYear());
+
+    return {
+      currentYear,
+    };
+  },
 }
 </script>
 

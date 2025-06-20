@@ -7,7 +7,7 @@
             :to="{ name: 'HomePage' }"
             class="text-black hover:text-gray-700 no-underline font-semibold text-lg"
           >
-            Platzi Rooms
+            Adventures App
           </router-link>
         </div>
         <div class="flex items-center w-auto">
