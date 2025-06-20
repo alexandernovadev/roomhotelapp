@@ -3,11 +3,13 @@
     <!-- <button @click="handleToggle">Toogle</button>
     <ModalJsx :show="show" message="HOla" /> -->
     <router-view />
+    <NotificationContainer />
   </div>
 </template>
 
 <script>
 // import ModalJsx from "./render-functions/ModalJsx.vue";
+import NotificationContainer from './components/NotificationContainer.vue'
 
 export default {
   data() {
@@ -15,7 +17,9 @@ export default {
       show: false,
     }
   },
-  components: {},
+  components: {
+    NotificationContainer,
+  },
   methods: {
     handleToggle() {
       this.show = !this.show

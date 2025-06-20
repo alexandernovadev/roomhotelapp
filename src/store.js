@@ -105,14 +105,23 @@ export default createStore({
       }, { onlyOnce: true })
     }),
 
-    CREATE_USER: async ({ commit }, { email, name, password }) => {
+    CREATE_USER: async ({ commit }, { email, name, password, phone, avatar }) => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
       const { user } = userCredential
       const registeredAt = Math.floor(Date.now() / 1000)
-      const newUser = { email, name, registeredAt }
+      const newUser = {
+        email,
+        name,
+        registeredAt,
+        phone: phone || '',
+        avatar: avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=0D9488&color=fff&size=128`,
+        bio: '',
+        username: email.split('@')[0] // Username por defecto basado en el email
+      }
 
       await set(ref(db, `users/${user.uid}`), newUser)
       commit('SET_ITEM', { resource: 'users', id: user.uid, item: newUser })
+      commit('SET_AUTHID', user.uid)
       return newUser
     },
 
