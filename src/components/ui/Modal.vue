@@ -14,6 +14,9 @@
         class="fixed inset-0 z-50 flex items-center justify-center"
         @click="handleOverlayClick"
       >
+        <!-- Debug log -->
+        <div v-if="false">{{ console.log('Modal isOpen:', isOpen) }}</div>
+
         <!-- Backdrop con blur -->
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
 
@@ -207,7 +210,10 @@ export default {
   },
   emits: ['update:modelValue', 'confirm', 'cancel', 'close'],
   setup(props, { emit }) {
-    const isOpen = computed(() => props.modelValue)
+    const isOpen = computed({
+      get: () => props.modelValue,
+      set: (value) => emit('update:modelValue', value)
+    })
 
     const modalSizeClasses = computed(() => {
       const sizeClasses = {
