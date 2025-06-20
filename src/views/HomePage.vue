@@ -17,18 +17,26 @@
     </section>
     <section class="container py-6 mx-auto">
       <h1 class="text-3xl font-light text-gray-800 mb-3">Explore</h1>
-      <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-        <div class="house__card mb-3" v-for="room in rooms" :key="room['.key']">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-8">
+        <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden" v-for="room in rooms" :key="room['.key']">
           <div class="relative h-48 overflow-hidden">
-            <img class="house__image absolute w-full" width="250" :src="room.featured_image" />
-          </div>
-          <div class="house__content bg-white p-3 border rounded">
-            <div class="house__type font-semibold text-xs uppercase text-teal-600 mb-1">
-              {{ room.type }}
+            <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" :src="room.featured_image" :alt="room.title" />
+            <div class="absolute top-3 left-3">
+              <span class="bg-white bg-opacity-90 text-teal-600 text-xs font-semibold px-2 py-1 rounded-full">
+                {{ room.type }}
+              </span>
             </div>
-            <div class="house__title font-bold mb-2">{{ room.title }}</div>
-            <div class="house__price text-xs">
-              <span class="font-bold">${{ room.price }}</span> per night
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-gray-800 text-lg mb-2 line-clamp-2">{{ room.title }}</h3>
+            <div class="flex items-center justify-between">
+              <div class="text-sm text-gray-600">
+                <span class="font-bold text-lg text-gray-900">${{ room.price }}</span>
+                <span class="text-gray-500"> / night</span>
+              </div>
+              <button class="bg-teal-500 hover:bg-teal-600 text-white text-xs font-medium px-3 py-1 rounded-full transition-colors duration-200">
+                View
+              </button>
             </div>
           </div>
         </div>
@@ -74,11 +82,5 @@ export default {
 </script>
 
 <style lang="css">
-.house__thumbnail > .house__image {
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-}
+/* Custom styles removed - using Tailwind CSS classes */
 </style>

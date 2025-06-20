@@ -1,62 +1,100 @@
 <template>
-  <footer class="footer mt-6">
-    <section class="footer__items bg-white border-t py-6">
-      <div class="container mx-auto grid-container">
-        <div class="footer__brand mb-3">
-          <p class="text-gray-800 text-3xl font-semibold mb-2">Adventures Rooms</p>
-          <p class="text-gray-600">
-            Discover entire homes and private rooms perfect for any trip.
+  <footer class="bg-teal-600 text-white">
+    <div class="container mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Brand Section -->
+        <div class="lg:col-span-2">
+          <h3 class="text-2xl font-bold mb-4">Adventures Rooms</h3>
+          <p class="text-teal-100 text-sm leading-relaxed mb-6">
+            Discover entire homes and private rooms perfect for any trip. Experience unique accommodations around the world.
           </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-teal-100 hover:text-white transition-colors duration-200">
+              <i class="material-icons text-xl">facebook</i>
+            </a>
+            <a href="#" class="text-teal-100 hover:text-white transition-colors duration-200">
+              <i class="material-icons text-xl">twitter</i>
+            </a>
+            <a href="#" class="text-teal-100 hover:text-white transition-colors duration-200">
+              <i class="material-icons text-xl">instagram</i>
+            </a>
+          </div>
         </div>
-        <div class="footer__list mb-3">
-          <ul class="list-none">
-            <li class="mb-2 text-lg text-gray-800 font-semibold">Product</li>
-            <li class="mb-2">
-              <a class="no-underline text-gray-700 hover:text-gray-900" href="#"
-                >The solution</a
-              >
+
+        <!-- Product Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-white">Product</h4>
+          <ul class="space-y-3">
+            <li>
+              <a href="#" class="text-teal-100 hover:text-white transition-colors duration-200 text-sm">
+                The solution
+              </a>
             </li>
-            <li class="mb-2">
-              <a class="no-underline text-gray-700 hover:text-gray-900" href="#"
-                >Tools overview</a
-              >
+            <li>
+              <a href="#" class="text-teal-100 hover:text-white transition-colors duration-200 text-sm">
+                Tools overview
+              </a>
             </li>
-            <li class="mb-2">
-              <a class="no-underline text-gray-700 hover:text-gray-900" href="#"
-                >Press kit</a
-              >
+            <li>
+              <a href="#" class="text-teal-100 hover:text-white transition-colors duration-200 text-sm">
+                Press kit
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-teal-100 hover:text-white transition-colors duration-200 text-sm">
+                Pricing
+              </a>
             </li>
           </ul>
         </div>
-        <div class="footer__list">
-          <ul class="list-none">
-            <li class="mb-2 text-lg text-gray-800 font-semibold">More info</li>
-            <li class="mb-2">
-              <a class="no-underline text-gray-700 hover:text-gray-900" href="#">Careers</a>
+
+        <!-- More Info Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-white">More info</h4>
+          <ul class="space-y-3">
+            <li>
+              <a href="#" class="text-teal-100 hover:text-white transition-colors duration-200 text-sm">
+                Careers
+              </a>
             </li>
-            <li class="mb-2">
-              <a class="no-underline text-gray-700 hover:text-gray-900" href="#">Contact</a>
+            <li>
+              <a href="#" class="text-teal-100 hover:text-white transition-colors duration-200 text-sm">
+                Contact
+              </a>
             </li>
-            <li class="mb-2">
-              <a class="no-underline text-gray-700 hover:text-gray-900" href="#">Blog</a>
+            <li>
+              <a href="#" class="text-teal-100 hover:text-white transition-colors duration-200 text-sm">
+                Blog
+              </a>
             </li>
-            <li class="mb-2">
-              <a class="no-underline text-gray-700 hover:text-gray-900" href="#"
-                >Terms of Service</a
-              >
+            <li>
+              <a href="#" class="text-teal-100 hover:text-white transition-colors duration-200 text-sm">
+                Terms of Service
+              </a>
             </li>
-            <li class="mb-2">
-              <a class="no-underline text-gray-700 hover:text-gray-900" href="#"
-                >Privacy and Cookie Policy</a
-              >
+            <li>
+              <a href="#" class="text-teal-100 hover:text-white transition-colors duration-200 text-sm">
+                Privacy Policy
+              </a>
             </li>
           </ul>
         </div>
       </div>
-    </section>
-    <section class="footer__copyright bg-teal-700 py-4 text-white">
-      <div class="container mx-auto"><b>Vue And Firebase</b></div>
-    </section>
+    </div>
+
+    <!-- Copyright Section -->
+    <div class="border-t border-teal-500 bg-black">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-white text-sm mb-2 md:mb-0">
+            © 2024 Adventures Rooms. All rights reserved.
+          </p>
+          <p class="text-white text-sm">
+            Built with <span class="text-yellow-400 font-semibold">Vue.js</span> and <span class="text-yellow-400 font-semibold">Firebase</span>
+          </p>
+        </div>
+      </div>
+    </div>
   </footer>
 </template>
 
@@ -67,16 +105,5 @@ export default {
 </script>
 
 <style>
-.footer .grid-container {
-  grid-template-columns: 2fr 1fr 1fr;
-}
-
-@media (max-width: 576px) {
-  .footer .grid-container {
-    grid-template-columns: 1fr;
-  }
-  .footer {
-    @apply text-center;
-  }
-}
+/* Custom styles removed - using Tailwind CSS classes */
 </style>
