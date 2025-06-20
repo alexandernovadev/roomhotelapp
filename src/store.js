@@ -82,12 +82,10 @@ export default createStore({
             })
             resolve(rooms)
           } else {
-            console.log('No data available')
             resolve(null)
           }
         })
         .catch((error) => {
-          console.error(error)
           reject(error)
         })
     }),
@@ -126,6 +124,10 @@ export default createStore({
     },
 
     FETCH_AUTH_USER: ({ dispatch, commit }) => {
+      if (!auth.currentUser) {
+        return Promise.resolve(null)
+      }
+
       const userId = auth.currentUser.uid
       commit('SET_AUTHID', userId)
       return dispatch('FETCH_USER', { id: userId })

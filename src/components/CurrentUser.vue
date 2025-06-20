@@ -12,7 +12,7 @@ export default {
   name: 'CurrentUser',
   setup() {
     const store = useStore();
-    const user = computed(() => store.getters['auth/authenticatedUser']);
+    const user = computed(() => store.getters.authUser);
 
     return {
       user,

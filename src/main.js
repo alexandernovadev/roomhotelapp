@@ -6,10 +6,15 @@ import router from './router'
 import store from './store'
 
 // Auth state listener
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
   if (user) {
-    console.log('User is signed in, fetching auth user...')
-    store.dispatch('FETCH_AUTH_USER')
+    try {
+      await store.dispatch('FETCH_AUTH_USER')
+    } catch (error) {
+      console.error('Error fetching auth user:', error)
+    }
+  } else {
+    store.commit('SET_AUTHID', null)
   }
 })
 
