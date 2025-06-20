@@ -38,50 +38,18 @@
       <slot></slot>
     </main>
     <footer-partial></footer-partial>
-
-    <!-- Modern Modals -->
-    <LoginModal
-      :show="modals.login"
-      @close="closeModalLogin"
-    />
-    <RegisterModal
-      :show="modals.register"
-      @close="closeModalRegister"
-    />
   </div>
 </template>
 
 <script>
-import { useModals } from '@/composables/useModals';
 import HeaderPartial from '@/partials/HeaderPartial.vue';
 import FooterPartial from '@/partials/FooterPartial.vue';
-import LoginModal from '@/components/LoginModal.vue';
-import RegisterModal from '@/components/RegisterModal.vue';
 
 export default {
   name: 'DefaultLayout',
-  setup() {
-    const { modals, closeModal } = useModals();
-
-    const closeModalRegister = () => {
-      closeModal('register');
-    };
-
-    const closeModalLogin = () => {
-      closeModal('login');
-    };
-
-    return {
-      modals,
-      closeModalLogin,
-      closeModalRegister,
-    };
-  },
   components: {
     HeaderPartial,
     FooterPartial,
-    LoginModal,
-    RegisterModal,
   },
 };
 </script>

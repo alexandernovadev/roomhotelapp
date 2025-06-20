@@ -40,20 +40,6 @@
                     <i class="material-icons">exit_to_app</i>
                   </button>
                 </div>
-                <div v-else>
-                  <button
-                    class="px-4 py-2 border border-teal-500 text-teal-500 rounded hover:bg-teal-500 hover:text-white mr-2"
-                    @click="getLogin"
-                  >
-                    Login
-                  </button>
-                  <button
-                    @click="signUp"
-                    class="bg-yellow-400 text-yellow-800 font-semibold py-2 px-4 rounded hover:bg-yellow-500"
-                  >
-                    Register
-                  </button>
-                </div>
               </div>
             </template>
           </current-user>
@@ -65,30 +51,18 @@
 
 <script>
 import { useStore } from 'vuex';
-import { useModals } from '@/composables/useModals';
 import CurrentUser from '../components/CurrentUser.vue';
 
 export default {
   name: 'HeaderPartial',
   setup() {
     const store = useStore();
-    const { openModal } = useModals();
-
-    const getLogin = () => {
-      openModal('login');
-    };
-
-    const signUp = () => {
-      openModal('register');
-    };
 
     const logOut = () => {
       store.dispatch('LOG_OUT');
     };
 
     return {
-      getLogin,
-      signUp,
       logOut,
     };
   },

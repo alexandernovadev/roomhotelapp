@@ -24,15 +24,8 @@ export default createStore({
     services: {},
     rooms: {},
     authId: null,
-    modals: {
-      login: false,
-      register: false,
-    },
   },
   mutations: {
-    SET_MODAL_STATE: (state, { name, value }) => {
-      state.modals[name] = value
-    },
     SET_ROOM(state, { newRoom, roomId }) {
       state.rooms[roomId] = newRoom
     },
@@ -52,9 +45,6 @@ export default createStore({
   },
 
   actions: {
-    TOGGLE_MODAL_STATE: ({ commit }, { name, value }) => {
-      commit('SET_MODAL_STATE', { name, value })
-    },
     CREATE_ROOM: async ({ state, commit }, room) => {
       const newRoom = { ...room }
       const roomsRef = ref(db, 'rooms')
@@ -144,7 +134,6 @@ export default createStore({
   },
 
   getters: {
-    modals: (state) => state.modals,
     authUser(state) {
       return state.authId ? state.users[state.authId] : null
     },
