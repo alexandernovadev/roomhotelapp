@@ -1,6 +1,5 @@
 import { createStore } from 'vuex'
 import {
-  getDatabase,
   ref,
   push,
   update,
@@ -16,10 +15,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth'
-import { auth } from '@/main' // Import auth from main.js
+import { auth, db } from './firebase' // Import from centralized firebase.js
 import countObjectProperties from './utilis'
-
-const db = getDatabase()
 
 export default createStore({
   state: {

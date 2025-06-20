@@ -5,14 +5,18 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 
 export default {
   name: 'CurrentUser',
-  computed: {
-    ...mapGetters({
-      user: 'authUser',
-    }),
+  setup() {
+    const store = useStore();
+    const user = computed(() => store.getters.authUser);
+
+    return {
+      user,
+    };
   },
-}
+};
 </script>
