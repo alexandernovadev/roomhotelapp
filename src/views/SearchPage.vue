@@ -13,9 +13,9 @@
     <section class="section__items py-8">
       <div class="container mx-auto">
         <h1 class="text-3xl font-light mb-3">Explore all</h1>
-        <div class="search__content grid-container mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
           <div class="house__card mb-3" v-for="room in rooms" :key="room['.key']">
-            <div class="house__thumbnail relative overflow-hidden">
+            <div class="house__thumbnail relative overflow-hidden h-48">
               <img class="house__image absolute w-full" width="250" :src="room.featured_image" />
             </div>
             <div class="house__content bg-white p-3 border rounded">
@@ -59,21 +59,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.section__items .grid-container {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-@media (max-width: 992px) {
-  .section__items .grid-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 576px) {
-  .section__items .grid-container {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
-</style>

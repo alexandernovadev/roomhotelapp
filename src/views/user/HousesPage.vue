@@ -13,9 +13,9 @@
     <section class="section__houses py-6">
       <div class="container mx-auto">
         <h1 class="text-3xl font-light m-3">My Houses</h1>
-        <div class="grid-container">
+        <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           <div class="house__card mb-3" v-for="room in userRooms" :key="room['.key']">
-            <div class="house__thumbnail relative overflow-hidden">
+            <div class="relative overflow-hidden h-40 sm:h-48">
               <img
                 class="house__image absolute w-full"
                 :src="room.featured_image"
@@ -66,27 +66,3 @@ export default {
   },
 };
 </script>
-<style>
-.section__houses .grid-container {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-@media (max-width: 992px) {
-  .house__card > .house__thumbnail {
-    height: 150px;
-  }
-  .section__houses .grid-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 576px) {
-  .section__houses .grid-container {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  .house__card > .house__thumbnail {
-    height: 120px;
-  }
-}
-</style>

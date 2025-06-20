@@ -13,8 +13,8 @@
     <section class="section__profile py-6">
       <div class="container mx-auto">
         <h1 class="text-3xl font-light m-3">Profile Account</h1>
-        <div class="grid-container">
-          <aside class="profile__aside px-3">
+        <div class="grid grid-cols-12 gap-4">
+          <aside class="col-span-3 px-3">
             <div class="profile__card">
               <div class="profile__thumbnail">
                 <img class="profile__image w-full" :src="profile.avatar" alt="User Avatar" />
@@ -24,7 +24,7 @@
               </p>
             </div>
           </aside>
-          <div class="profile__fields">
+          <div class="col-span-9">
             <form @submit.prevent="saveProfile">
               <div class="mb-4">
                 <label class="input__label" for="name">Name</label>
@@ -150,8 +150,3 @@ export default {
   },
 };
 </script>
-<style>
-.section__profile .grid-container {
-  grid-template-columns: 3fr 9fr;
-}
-</style>

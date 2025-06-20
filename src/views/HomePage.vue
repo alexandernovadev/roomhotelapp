@@ -17,9 +17,9 @@
     </section>
     <section class="container py-6 mx-auto">
       <h1 class="text-3xl font-light text-gray-800 mb-3">Explore</h1>
-      <div class="section__explore grid-container mb-8">
+      <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
         <div class="house__card mb-3" v-for="room in rooms" :key="room['.key']">
-          <div class="house__thumbnail relative overflow-hidden">
+          <div class="relative h-48 overflow-hidden">
             <img class="house__image absolute w-full" width="250" :src="room.featured_image" />
           </div>
           <div class="house__content bg-white p-3 border rounded">
@@ -74,38 +74,11 @@ export default {
 </script>
 
 <style lang="css">
-.section__explore {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.house__card > .house__thumbnail {
-  height: 170px;
-}
-
 .house__thumbnail > .house__image {
   width: 100%;
   top: 50%;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-}
-
-@media (max-width: 992px) {
-  .house__card > .house__thumbnail {
-    height: 150px;
-  }
-  .section__explore {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 576px) {
-  .section__explore {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  .house__card > .house__thumbnail {
-    height: 120px;
-  }
 }
 </style>

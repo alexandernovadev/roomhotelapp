@@ -1,22 +1,23 @@
 <template>
   <div class="default-layout">
     <header-partial></header-partial>
-    <section class="section__hero py-6 bg-black bg-cover bg-center">
-      <div class="container">
-        <div class="section__form bg-white p-4 w-1/2 shadow-md">
-          <h1 class="mb-2 text-4xl font-light text-grey-darkest">
+    <section class="py-6 bg-black bg-cover bg-center min-h-[250px] sm:min-h-[450px]"
+             style="background-image: url('https://images.unsplash.com/photo-1504202302068-15fc2055f7f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1330&q=80');">
+      <div class="container mx-auto">
+        <div class="bg-white p-4 w-full sm:w-1/2 shadow-md">
+          <h1 class="mb-2 text-4xl font-light text-gray-800">
             Find homes on Adeventures Rooms
           </h1>
-          <h2 class="mb-6 text-base text-grey-dark font-normal">
+          <h2 class="mb-6 text-base text-gray-700 font-normal">
             Discover entire homes and private rooms perfect for any trip.
           </h2>
-          <form class="form__search">
+          <form class="form__search" @submit.prevent>
             <div class="mb-4">
               <label class="input__label" for="where">Where</label>
-              <div class="form__field relative">
-                <i class="input-icon material-icons absolute text-grey-darker">search</i>
+              <div class="relative">
+                <i class="material-icons absolute top-2 left-2 text-gray-600">search</i>
                 <input
-                  class="input__search"
+                  class="w-full pl-10"
                   id="where"
                   type="text"
                   placeholder="Mexico City, Mexico"
@@ -24,7 +25,8 @@
               </div>
             </div>
             <button
-              class="px-2 py-4 bg-yellow-dark font-semibold w-full rounded text-yellow-darker"
+              type="submit"
+              class="px-2 py-4 bg-yellow-400 font-semibold w-full rounded text-yellow-800 hover:bg-yellow-500"
             >
               Search
             </button>
@@ -111,29 +113,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.section__hero {
-  min-height: 450px;
-  background-image: url('https://images.unsplash.com/photo-1504202302068-15fc2055f7f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1330&q=80');
-}
-
-.form__field .input-icon {
-  top: 7px;
-  left: 9px;
-}
-
-.form__field > .input__search {
-  @apply pl-10;
-}
-
-@media (max-width: 576px) {
-  .section__hero {
-    min-height: 250px;
-  }
-
-  .section__form {
-    @apply w-full;
-  }
-}
-</style>
