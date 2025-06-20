@@ -21,7 +21,7 @@
               <div class="items__controls">
                 <div class="flex items-center" v-if="user">
                   <router-link
-                    :to="{ name: 'CreateHousePage' }"
+                    :to="{ name: 'CreateHomePage' }"
                     class="no-underline mr-4 flex items-center text-gray-800 hover:text-gray-600 transition-colors duration-200"
                   >
                     <i class="material-icons">add</i>
@@ -34,8 +34,8 @@
                   <!-- Menú de usuario -->
                   <div class="relative user-menu">
                     <button
-                      @click="userMenuOpen = !userMenuOpen"
-                      class="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                      @click="toggleUserMenu"
+                      class="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 border border-gray-200"
                     >
                       <img
                         class="w-8 h-8 rounded-full"
@@ -54,57 +54,64 @@
                     <!-- Dropdown menu -->
                     <div
                       v-if="userMenuOpen"
-                      class="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+                      class="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
+                      style="min-width: 250px;"
                     >
-                      <div class="px-4 py-3 border-b border-gray-100">
+                      <!-- Header del dropdown -->
+                      <div class="px-4 py-3 border-b border-gray-100 bg-gray-50 rounded-t-lg">
                         <p class="text-sm font-medium text-gray-900">{{ user.name }}</p>
                         <p class="text-sm text-gray-500">{{ user.email }}</p>
                       </div>
 
+                      <!-- Opciones del menú -->
                       <div class="py-1">
                         <router-link
                           :to="{ name: 'ProfilePage' }"
-                          @click="userMenuOpen = false"
-                          class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                          @click="toggleUserMenu"
+                          class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
                         >
                           <i class="material-icons text-gray-400 mr-3 text-lg">person</i>
-                          Mi Perfil
+                          <span>Mi Perfil</span>
                         </router-link>
 
                         <router-link
                           :to="{ name: 'HousesPages' }"
-                          @click="userMenuOpen = false"
-                          class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                          @click="toggleUserMenu"
+                          class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
                         >
                           <i class="material-icons text-gray-400 mr-3 text-lg">home</i>
-                          Mis Habitaciones
+                          <span>Mis Habitaciones</span>
                         </router-link>
 
                         <router-link
-                          :to="{ name: 'CreateHousePage' }"
-                          @click="userMenuOpen = false"
-                          class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                          :to="{ name: 'CreateHomePage' }"
+                          @click="toggleUserMenu"
+                          class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
                         >
                           <i class="material-icons text-gray-400 mr-3 text-lg">add_circle</i>
-                          Publicar Habitación
+                          <span>Publicar Habitación</span>
                         </router-link>
                       </div>
 
-                      <div class="border-t border-gray-100 py-1">
+                      <!-- Separador -->
+                      <div class="border-t border-gray-100 my-1"></div>
+
+                      <!-- Opciones de configuración -->
+                      <div class="py-1">
                         <button
                           @click="handleSettings"
-                          class="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                          class="flex items-center w-full px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
                         >
                           <i class="material-icons text-gray-400 mr-3 text-lg">settings</i>
-                          Configuración
+                          <span>Configuración</span>
                         </button>
 
                         <button
                           @click="handleLogout"
-                          class="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200"
+                          class="flex items-center w-full px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200"
                         >
                           <i class="material-icons text-red-400 mr-3 text-lg">exit_to_app</i>
-                          Cerrar Sesión
+                          <span>Cerrar Sesión</span>
                         </button>
                       </div>
                     </div>
@@ -405,8 +412,6 @@ export default {
 
     // Handlers de eventos
     const handleRegisterSubmit = async () => {
-      console.log('Formulario de registro enviado:', registerForm);
-
       // Validar que las contraseñas coincidan
       if (registerForm.password !== registerForm.confirmPassword) {
         showError('Error de validación', 'Las contraseñas no coinciden');
@@ -461,7 +466,6 @@ export default {
     };
 
     const handleRegisterCancel = () => {
-      console.log('Registro cancelado');
       // Resetear formulario
       Object.assign(registerForm, {
         name: '',
@@ -474,8 +478,6 @@ export default {
     };
 
     const handleLoginSubmit = async () => {
-      console.log('Formulario de login enviado:', loginForm);
-
       isLoggingIn.value = true;
 
       try {
@@ -518,7 +520,6 @@ export default {
     };
 
     const handleLoginCancel = () => {
-      console.log('Login cancelado');
       // Resetear formulario
       Object.assign(loginForm, {
         email: '',
@@ -536,6 +537,11 @@ export default {
       logOut();
     };
 
+    // Toggle del menú de usuario
+    const toggleUserMenu = () => {
+      userMenuOpen.value = !userMenuOpen.value;
+    };
+
     // Cerrar menú al hacer clic fuera
     const closeUserMenu = () => {
       userMenuOpen.value = false;
@@ -543,7 +549,8 @@ export default {
 
     // Agregar event listener para cerrar menú al hacer clic fuera
     const handleClickOutside = (event) => {
-      if (userMenuOpen.value && !event.target.closest('.user-menu')) {
+      const userMenuElement = document.querySelector('.user-menu');
+      if (userMenuOpen.value && userMenuElement && !userMenuElement.contains(event.target)) {
         closeUserMenu();
       }
     };
@@ -575,6 +582,7 @@ export default {
       handleLoginCancel,
       handleSettings,
       handleLogout,
+      toggleUserMenu,
     };
   },
 };
