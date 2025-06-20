@@ -38,78 +38,50 @@
       <slot></slot>
     </main>
     <footer-partial></footer-partial>
-    <!-- Modals -->
+
+    <!-- Modern Modals -->
+    <LoginModal
+      :show="modals.login"
+      @close="closeModalLogin"
+    />
+    <RegisterModal
+      :show="modals.register"
+      @close="closeModalRegister"
+    />
   </div>
 </template>
 
 <script>
-import { reactive, computed } from 'vue';
-import { useStore } from 'vuex';
+import { useModals } from '@/composables/useModals';
 import HeaderPartial from '@/partials/HeaderPartial.vue';
 import FooterPartial from '@/partials/FooterPartial.vue';
-// import Modal from '@/components/Modal.vue';
+import LoginModal from '@/components/LoginModal.vue';
+import RegisterModal from '@/components/RegisterModal.vue';
 
 export default {
   name: 'DefaultLayout',
   setup() {
-    const store = useStore();
-
-    const formLogin = reactive({
-      email: '',
-      password: '',
-      rememberMe: false,
-    });
-
-    const formRegister = reactive({
-      email: '',
-      name: '',
-      password: '',
-    });
-
-    const modals = computed(() => store.getters.modals);
-
-    const closeModal = () => {
-      store.dispatch('TOGGLE_MODAL_STATE', {
-        name: 'login',
-        value: false,
-      });
-    };
+    const { modals, closeModal } = useModals();
 
     const closeModalRegister = () => {
-      store.dispatch('TOGGLE_MODAL_STATE', {
-        name: 'register',
-        value: false,
-      });
+      closeModal('register');
     };
 
-    const registerHandlerSubmit = () => {
-      store.dispatch('CREATE_USER', formRegister).then(() => {
-        closeModalRegister();
-      });
-    };
-
-    const loginHandlerSubmit = () => {
-      store.dispatch('SIGN_IN', {
-        email: formLogin.email,
-        password: formLogin.password,
-      }).then(() => {
-        closeModal();
-      });
+    const closeModalLogin = () => {
+      closeModal('login');
     };
 
     return {
-      formLogin,
-      formRegister,
       modals,
-      closeModal,
+      closeModalLogin,
       closeModalRegister,
-      registerHandlerSubmit,
-      loginHandlerSubmit,
     };
   },
   components: {
     HeaderPartial,
     FooterPartial,
+    LoginModal,
+    RegisterModal,
   },
 };
 </script>

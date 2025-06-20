@@ -65,25 +65,21 @@
 
 <script>
 import { useStore } from 'vuex';
+import { useModals } from '@/composables/useModals';
 import CurrentUser from '../components/CurrentUser.vue';
 
 export default {
   name: 'HeaderPartial',
   setup() {
     const store = useStore();
+    const { openModal } = useModals();
 
     const getLogin = () => {
-      store.dispatch('TOGGLE_MODAL_STATE', {
-        name: 'login',
-        value: true,
-      });
+      openModal('login');
     };
 
     const signUp = () => {
-      store.dispatch('TOGGLE_MODAL_STATE', {
-        name: 'register',
-        value: true,
-      });
+      openModal('register');
     };
 
     const logOut = () => {
