@@ -11,11 +11,11 @@
     >
       <div
         v-if="isOpen"
-        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4"
         @click="handleOverlayClick"
       >
         <!-- Backdrop con blur -->
-        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <div class="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
 
         <!-- Modal container con animación de escala y slide -->
         <Transition
