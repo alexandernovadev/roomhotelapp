@@ -26,7 +26,7 @@
             </div>
             <button
               type="submit"
-              class="w-full py-3 bg-yellow-400 font-semibold rounded-lg text-yellow-800 hover:bg-yellow-500 transition-colors duration-200"
+              class="w-full py-3 bg-cyan-500 font-semibold rounded-lg text-white hover:bg-cyan-600 transition-colors duration-200"
             >
               Search
             </button>

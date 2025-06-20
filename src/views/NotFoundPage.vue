@@ -1,6 +1,6 @@
 <template>
   <page-layout>
-    <section class="py-4 bg-teal-dark">
+    <section class="py-4 bg-cyan-700">
       <div class="container">
         <form class="form">
           <div class="form__field relative">

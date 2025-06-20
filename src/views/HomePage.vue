@@ -22,7 +22,7 @@
           <div class="relative h-48 overflow-hidden">
             <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" :src="room.featured_image" :alt="room.title" />
             <div class="absolute top-3 left-3">
-              <span class="bg-white bg-opacity-90 text-teal-600 text-xs font-semibold px-2 py-1 rounded-full">
+              <span class="bg-white bg-opacity-90 text-cyan-600 text-xs font-semibold px-2 py-1 rounded-full">
                 {{ room.type }}
               </span>
             </div>
@@ -34,7 +34,7 @@
                 <span class="font-bold text-lg text-gray-900">${{ room.price }}</span>
                 <span class="text-gray-500"> / night</span>
               </div>
-              <button class="bg-teal-500 hover:bg-teal-600 text-white text-xs font-medium px-3 py-1 rounded-full transition-colors duration-200">
+              <button class="bg-cyan-500 hover:bg-cyan-600 text-white text-xs font-medium px-3 py-1 rounded-full transition-colors duration-200">
                 View
               </button>
             </div>
@@ -43,7 +43,7 @@
       </div>
       <div class="text-center">
         <router-link
-          class="py-3 px-12 bg-yellow-400 no-underline text-yellow-800 text-lg rounded"
+          class="py-3 px-12 bg-cyan-500 no-underline text-white text-lg rounded hover:bg-cyan-600 transition-colors duration-200"
           :to="{ name: 'SearchPage' }"
         >
           Show all

@@ -1,6 +1,6 @@
 <template>
   <page-layout>
-    <section class="py-4 bg-teal-700">
+    <section class="py-4 bg-cyan-700">
       <div class="container mx-auto">
         <form class="form">
           <div class="form__field relative">
@@ -22,7 +22,7 @@
               />
             </div>
             <div class="house__content bg-white p-3 border rounded">
-              <div class="house__type font-semibold text-xs uppercase text-teal-600 mb-1">
+              <div class="house__type font-semibold text-xs uppercase text-cyan-600 mb-1">
                 {{ room.type }}
               </div>
               <div class="house__title font-bold mb-2">

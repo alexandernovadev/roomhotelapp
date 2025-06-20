@@ -50,7 +50,7 @@
                   </button>
                   <button
                     @click="openRegisterModal"
-                    class="px-4 py-2 text-white bg-teal-600 border border-transparent rounded-lg hover:bg-teal-700 transition-colors duration-200 font-medium"
+                    class="px-4 py-2 text-white bg-cyan-600 border border-transparent rounded-lg hover:bg-cyan-700 transition-colors duration-200 font-medium"
                   >
                     Registrarse
                   </button>
@@ -84,7 +84,7 @@
             v-model="registerForm.name"
             type="text"
             required
-            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             placeholder="Ingresa tu nombre completo"
           />
         </div>
@@ -98,7 +98,7 @@
             v-model="registerForm.email"
             type="email"
             required
-            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             placeholder="tu@email.com"
           />
         </div>
@@ -113,7 +113,7 @@
             type="password"
             required
             minlength="6"
-            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             placeholder="Mínimo 6 caracteres"
           />
         </div>
@@ -127,7 +127,7 @@
             v-model="registerForm.confirmPassword"
             type="password"
             required
-            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             placeholder="Confirma tu contraseña"
           />
         </div>
@@ -140,7 +140,7 @@
             id="register-phone"
             v-model="registerForm.phone"
             type="tel"
-            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             placeholder="+1 (555) 123-4567"
           />
         </div>
@@ -151,10 +151,10 @@
             v-model="registerForm.terms"
             type="checkbox"
             required
-            class="h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded"
+            class="h-4 w-4 text-cyan-600 focus:ring-cyan-500 border-gray-300 rounded"
           />
           <label for="register-terms" class="ml-2 block text-sm text-gray-700">
-            Acepto los <a href="#" class="text-teal-600 hover:text-teal-700 underline">términos y condiciones</a>
+            Acepto los <a href="#" class="text-cyan-600 hover:text-cyan-700 underline">términos y condiciones</a>
           </label>
         </div>
       </form>
@@ -182,7 +182,7 @@
             v-model="loginForm.email"
             type="email"
             required
-            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             placeholder="tu@email.com"
           />
         </div>
@@ -196,7 +196,7 @@
             v-model="loginForm.password"
             type="password"
             required
-            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             placeholder="Tu contraseña"
           />
         </div>
@@ -207,13 +207,13 @@
               id="login-remember"
               v-model="loginForm.remember"
               type="checkbox"
-              class="h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded"
+              class="h-4 w-4 text-cyan-600 focus:ring-cyan-500 border-gray-300 rounded"
             />
             <label for="login-remember" class="ml-2 block text-sm text-gray-700">
               Recordarme
             </label>
           </div>
-          <a href="#" class="text-sm text-teal-600 hover:text-teal-700">
+          <a href="#" class="text-sm text-cyan-600 hover:text-cyan-700">
             ¿Olvidaste tu contraseña?
           </a>
         </div>

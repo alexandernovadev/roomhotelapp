@@ -1,6 +1,6 @@
 <template>
   <page-layout>
-    <section class="py-4 bg-teal-700">
+    <section class="py-4 bg-cyan-700">
       <div class="container mx-auto">
         <form class="form">
           <div class="form__field relative">
@@ -88,7 +88,7 @@
               </div>
               <div class="flex items-center w-auto mb-4">
                 <button type="button" class="px-4 py-2 border rounded mr-3">Cancel</button>
-                <button type="submit" class="bg-yellow-400 text-yellow-800 font-semibold py-2 px-4 rounded hover:bg-yellow-500">
+                <button type="submit" class="bg-cyan-500 text-white font-semibold py-2 px-4 rounded hover:bg-cyan-600 transition-colors duration-200">
                   Save
                 </button>
               </div>

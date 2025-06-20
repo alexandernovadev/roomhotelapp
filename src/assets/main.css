@@ -41,10 +41,10 @@ body {
   @apply border-transparent;
 }
 
-.btn__outline.btn__outline--teal {
-  @apply text-teal-dark border-teal;
+.btn__outline.btn__outline--cyan {
+  @apply text-cyan-600 border-cyan-500;
 }
 
-.btn__outline.btn__outline--teal:hover {
-  @apply bg-teal text-white;
+.btn__outline.btn__outline--cyan:hover {
+  @apply bg-cyan-500 text-white;
 }

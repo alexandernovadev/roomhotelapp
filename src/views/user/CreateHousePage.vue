@@ -1,6 +1,6 @@
 <template>
   <page-layout>
-    <section class="py-4 bg-teal-700">
+    <section class="py-4 bg-cyan-700">
       <div class="container mx-auto">
         <form class="form">
           <div class="form__field relative">
@@ -44,7 +44,7 @@
           <div class="mb-4 text-right">
             <button
               type="submit"
-              class="w-full bg-yellow-400 text-yellow-800 font-semibold py-3 px-6 rounded hover:bg-yellow-500"
+              class="w-full bg-cyan-500 text-white font-semibold py-3 px-6 rounded hover:bg-cyan-600 transition-colors duration-200"
             >
               Publish
             </button>

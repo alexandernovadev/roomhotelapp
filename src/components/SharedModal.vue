@@ -96,7 +96,7 @@
                 <button
                   v-if="showConfirmButton"
                   @click="handleConfirm"
-                  class="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
+                  class="px-4 py-2 text-sm font-medium text-white bg-cyan-600 border border-transparent rounded-lg hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 transition-colors duration-200"
                   :class="confirmButtonClasses"
                 >
                   {{ confirmButtonText }}
@@ -199,7 +199,7 @@ export default {
     },
     iconClasses: {
       type: String,
-      default: 'bg-blue-100 text-blue-600'
+      default: 'bg-cyan-100 text-cyan-600'
     }
   },
 
@@ -230,7 +230,7 @@ export default {
 
     const confirmButtonClasses = computed(() => {
       const variantMap = {
-        primary: 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500',
+        primary: 'bg-cyan-600 hover:bg-cyan-700 focus:ring-cyan-500',
         success: 'bg-green-600 hover:bg-green-700 focus:ring-green-500',
         warning: 'bg-yellow-600 hover:bg-yellow-700 focus:ring-yellow-500',
         danger: 'bg-red-600 hover:bg-red-700 focus:ring-red-500'
