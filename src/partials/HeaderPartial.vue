@@ -5,8 +5,13 @@
         <div class="flex items-center flex-shrink-0 mr-6">
           <router-link
             :to="{ name: 'HomePage' }"
-            class="text-black hover:text-gray-700 no-underline font-semibold text-lg"
+            class="text-black hover:text-gray-700 no-underline font-semibold text-lg flex items-center"
           >
+            <img
+              src="@/assets/logonew.png"
+              alt="Adventures App Logo"
+              class="w-8 h-8 mr-3"
+            />
             Adventures App
           </router-link>
         </div>

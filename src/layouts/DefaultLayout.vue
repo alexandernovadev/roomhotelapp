@@ -1,13 +1,15 @@
 <template>
   <div class="default-layout">
     <header-partial></header-partial>
-    <section class="py-6 bg-black bg-cover bg-center min-h-[250px] sm:min-h-[450px]"
-             style="background-image: url('https://images.unsplash.com/photo-1504202302068-15fc2055f7f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1330&q=80');">
+    <section
+      class="py-6 bg-black bg-cover bg-center min-h-[350px] sm:min-h-[550px] flex items-center"
+      style="
+        background-image: url('https://images.unsplash.com/photo-1504202302068-15fc2055f7f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1330&q=80');
+      "
+    >
       <div class="container mx-auto px-4">
-        <div class="bg-white p-6 w-full max-w-md mx-auto shadow-lg rounded-lg">
-          <h1 class="mb-3 text-3xl font-light text-gray-800">
-            Find homes on Adventures App
-          </h1>
+        <div class="bg-white p-6 w-full max-w-md ml-auto shadow-lg rounded-lg">
+          <h1 class="mb-3 text-3xl font-light text-gray-800">Find homes on Adventures App</h1>
           <h2 class="mb-6 text-sm text-gray-600 font-normal">
             Discover entire homes and private rooms perfect for any trip.
           </h2>
@@ -20,7 +22,7 @@
                   class="w-full py-3 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
                   id="where"
                   type="text"
-                  placeholder="Mexico City, Mexico"
+                  placeholder="Bogotá, Colombia"
                 />
               </div>
             </div>
@@ -42,8 +44,8 @@
 </template>
 
 <script>
-import HeaderPartial from '@/partials/HeaderPartial.vue';
-import FooterPartial from '@/partials/FooterPartial.vue';
+import HeaderPartial from '@/partials/HeaderPartial.vue'
+import FooterPartial from '@/partials/FooterPartial.vue'
 
 export default {
   name: 'DefaultLayout',
@@ -51,5 +53,5 @@ export default {
     HeaderPartial,
     FooterPartial,
   },
-};
+}
 </script>

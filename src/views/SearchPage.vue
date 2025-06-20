@@ -1,6 +1,6 @@
 <template>
   <page-layout>
-    <section class="py-6 bg-cyan-700">
+    <section class="py-6 bg-gray-700">
       <div class="container mx-auto px-4">
         <form class="max-w-md mx-auto">
           <div class="relative">
@@ -9,7 +9,7 @@
               class="w-full py-3 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
               id="where"
               type="text"
-              placeholder="Mexico City, Mexico"
+              placeholder="Bogotá, Colombia"
             />
           </div>
         </form>

@@ -5,7 +5,7 @@
         <form class="form">
           <div class="form__field relative">
             <i class="input-icon material-icons absolute text-grey-darker">search</i>
-            <input class="input__search" id="where" type="text" placeholder="Mexico City, Mexico" />
+            <input class="input__search" id="where" type="text" placeholder="Bogotá, Colombia" />
           </div>
         </form>
       </div>
