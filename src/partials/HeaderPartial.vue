@@ -186,6 +186,7 @@
             v-model="registerForm.name"
             type="text"
             required
+            autocomplete="name"
             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             placeholder="Ingresa tu nombre completo"
           />
@@ -200,6 +201,7 @@
             v-model="registerForm.email"
             type="email"
             required
+            autocomplete="email"
             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             placeholder="tu@email.com"
           />
@@ -215,6 +217,7 @@
             type="password"
             required
             minlength="6"
+            autocomplete="new-password"
             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             placeholder="Mínimo 6 caracteres"
           />
@@ -229,6 +232,7 @@
             v-model="registerForm.confirmPassword"
             type="password"
             required
+            autocomplete="new-password"
             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             placeholder="Confirma tu contraseña"
           />
@@ -242,6 +246,7 @@
             id="register-phone"
             v-model="registerForm.phone"
             type="tel"
+            autocomplete="tel"
             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             placeholder="+1 (555) 123-4567"
           />
@@ -309,6 +314,7 @@
             v-model="loginForm.email"
             type="email"
             required
+            autocomplete="email"
             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             placeholder="tu@email.com"
           />
@@ -323,6 +329,7 @@
             v-model="loginForm.password"
             type="password"
             required
+            autocomplete="current-password"
             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             placeholder="Tu contraseña"
           />
@@ -574,6 +581,8 @@ export default {
       isRegistering,
       isLoggingIn,
       userMenuOpen,
+      showConfirmButton: ref(true),
+      showCancelButton: ref(true),
       openLoginModal,
       openRegisterModal,
       handleRegisterSubmit,
