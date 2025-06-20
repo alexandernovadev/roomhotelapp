@@ -1,10 +1,10 @@
-import Vue from 'vue'
-import firebase from 'firebase'
+import { createApp } from 'vue'
+import { initializeApp } from 'firebase/app'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 
-Vue.config.productionTip = false
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyCfsNo8UySXjVBv83qzYYw538WsaHf-C6E',
@@ -14,21 +14,27 @@ const firebaseConfig = {
   messagingSenderId: '326652607881',
   appId: '1:326652607881:web:6f079aff8dbbd5fa5b3558',
 }
-// Initialize Firebase WWTTF en main se puede traer un CICLO DE VIDA ??
-firebase.initializeApp(firebaseConfig)
-// Escuha el cambio de la autenticacion
-firebase.auth().onAuthStateChanged((user) => {
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig)
+const auth = getAuth(app)
+
+// Auth state listener
+onAuthStateChanged(auth, (user) => {
   if (user) {
-    console.log('Entra a buscar ?')
+    console.log('User is signed in, fetching auth user...')
     store.dispatch('FETCH_AUTH_USER')
   }
 })
 
-new Vue({
-  router,
-  store,
-  render: (h) => h(App),
-  beforeCreate() {
-    this.$store.dispatch('FETCH_USER', { id: store.state.authId })
-  },
-}).$mount('#app')
+const vueApp = createApp(App)
+
+vueApp.use(router)
+vueApp.use(store)
+
+vueApp.mount('#app')
+
+// Initial user fetch (consider moving this inside the onAuthStateChanged block if it depends on auth)
+store.dispatch('FETCH_USER', { id: store.state.authId })
+
+export { auth }

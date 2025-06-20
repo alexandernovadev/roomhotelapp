@@ -1,7 +1,7 @@
 <template>
   <default-layout>
-    <section class="container py-6">
-      <h1 class="text-3xl font-light text-grey-darkest mb-3">Recommended</h1>
+    <section class="container py-6 mx-auto">
+      <h1 class="text-3xl font-light text-gray-800 mb-3">Recommended</h1>
       <div class="section">
         <!-- Here
 
@@ -15,27 +15,27 @@
         </tiny-slider> -->
       </div>
     </section>
-    <section class="container py-6">
-      <h1 class="text-3xl font-light text-grey-darkest mb-3">Explore</h1>
+    <section class="container py-6 mx-auto">
+      <h1 class="text-3xl font-light text-gray-800 mb-3">Explore</h1>
       <div class="section__explore grid-container mb-8">
-        <div class="house__card mb-3" v-for="i in rooms" :key="i['.key']">
+        <div class="house__card mb-3" v-for="room in rooms" :key="room['.key']">
           <div class="house__thumbnail relative overflow-hidden">
-            <img class="house__image absolute w-full" width="250" :src="i.featured_image" />
+            <img class="house__image absolute w-full" width="250" :src="room.featured_image" />
           </div>
           <div class="house__content bg-white p-3 border rounded">
-            <div class="house__type font-semibold text-xs uppercase text-teal-dark mb-1">
-              {{ i.type }} {{ i['.key'] }}
+            <div class="house__type font-semibold text-xs uppercase text-teal-600 mb-1">
+              {{ room.type }}
             </div>
-            <div class="house__title font-bold mb-2">{{ i.description.slice(0, 30) }}</div>
+            <div class="house__title font-bold mb-2">{{ room.title }}</div>
             <div class="house__price text-xs">
-              <span class="font-bold">${{ i.price }}</span> per night
+              <span class="font-bold">${{ room.price }}</span> per night
             </div>
           </div>
         </div>
       </div>
       <div class="text-center">
         <router-link
-          class="py-3 px-12 bg-yellow-dark no-underline text-yellow-darker text-lg rounded"
+          class="py-3 px-12 bg-yellow-400 no-underline text-yellow-800 text-lg rounded"
           :to="{ name: 'SearchPage' }"
         >
           Show all
@@ -46,23 +46,31 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import { computed, onMounted } from 'vue';
+import { useStore } from 'vuex';
+import DefaultLayout from '@/layouts/DefaultLayout.vue';
 // import TinySlider from '@/components/TinySlider.vue';
 
 export default {
   name: 'HomePage',
-  beforeCreate() {
-    this.$store.dispatch('FETCH_ROOMS', 12)
-  },
-  computed: {
-    ...mapGetters(['rooms']),
+  setup() {
+    const store = useStore();
+
+    const rooms = computed(() => store.getters.rooms);
+
+    onMounted(() => {
+      store.dispatch('FETCH_ROOMS', 12);
+    });
+
+    return {
+      rooms,
+    };
   },
   components: {
     DefaultLayout,
     // TinySlider,
   },
-}
+};
 </script>
 
 <style lang="css">

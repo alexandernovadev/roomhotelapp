@@ -41,64 +41,75 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import HeaderPartial from '@/partials/HeaderPartial.vue'
-import FooterPartial from '@/partials/FooterPartial.vue'
+import { reactive, computed } from 'vue';
+import { useStore } from 'vuex';
+import HeaderPartial from '@/partials/HeaderPartial.vue';
+import FooterPartial from '@/partials/FooterPartial.vue';
 // import Modal from '@/components/Modal.vue';
 
 export default {
   name: 'DefaultLayout',
-  data() {
+  setup() {
+    const store = useStore();
+
+    const formLogin = reactive({
+      email: '',
+      password: '',
+      rememberMe: false,
+    });
+
+    const formRegister = reactive({
+      email: '',
+      name: '',
+      password: '',
+    });
+
+    const modals = computed(() => store.getters.modals);
+
+    const closeModal = () => {
+      store.dispatch('TOGGLE_MODAL_STATE', {
+        name: 'login',
+        value: false,
+      });
+    };
+
+    const closeModalRegister = () => {
+      store.dispatch('TOGGLE_MODAL_STATE', {
+        name: 'register',
+        value: false,
+      });
+    };
+
+    const registerHandlerSubmit = () => {
+      store.dispatch('CREATE_USER', formRegister).then(() => {
+        closeModalRegister();
+      });
+    };
+
+    const loginHandlerSubmit = () => {
+      store.dispatch('SIGN_IN', {
+        email: formLogin.email,
+        password: formLogin.password,
+      }).then(() => {
+        closeModal();
+      });
+    };
+
     return {
-      formLogin: {
-        email: '',
-        password: '',
-        rememberMe: false,
-      },
-      formRegister: {
-        email: '',
-        name: '',
-        password: '',
-      },
-    }
-  },
-  computed: {
-    ...mapGetters(['modals']),
+      formLogin,
+      formRegister,
+      modals,
+      closeModal,
+      closeModalRegister,
+      registerHandlerSubmit,
+      loginHandlerSubmit,
+    };
   },
   components: {
     HeaderPartial,
     FooterPartial,
   },
-  methods: {
-    closeModal() {
-      this.$store.dispatch('TOGGLE_MODAL_STATE', {
-        name: 'login',
-        value: false,
-      })
-    },
-    closeModalRegister() {
-      this.$store.dispatch('TOGGLE_MODAL_STATE', {
-        name: 'register',
-        value: false,
-      })
-    },
-    registerHandlerSubmit() {
-      this.$store.dispatch('CREATE_USER', this.formRegister).then(() => {
-        this.closeModalRegister()
-      })
-    },
-    loginHandlerSubmit() {
-      this.$store
-        .dispatch('SIGN_IN', {
-          email: this.formLogin.email,
-          password: this.formLogin.password,
-        })
-        .then(() => {
-          this.closeModal()
-        })
-    },
-  },
-}
+};
 </script>
 
 <style>
