@@ -1,31 +1,31 @@
 <template>
   <page-layout>
-    <section class="py-4 bg-teal-dark">
-      <div class="container">
+    <section class="py-4 bg-teal-700">
+      <div class="container mx-auto">
         <form class="form">
           <div class="form__field relative">
-            <i class="input-icon material-icons absolute text-grey-darker">search</i>
+            <i class="input-icon material-icons absolute text-gray-500">search</i>
             <input class="input__search" id="where" type="text" placeholder="New York" />
           </div>
         </form>
       </div>
     </section>
     <section class="section__profile py-6">
-      <div class="container">
+      <div class="container mx-auto">
         <h1 class="text-3xl font-light m-3">Profile Account</h1>
         <div class="grid-container">
           <aside class="profile__aside px-3">
             <div class="profile__card">
               <div class="profile__thumbnail">
-                <img class="profile__image w-full" :src="profile.avatar" />
+                <img class="profile__image w-full" :src="profile.avatar" alt="User Avatar" />
               </div>
-              <span>
-                <b> {{ userRoomsCounts }} rooms</b>
-              </span>
+              <p class="text-center">
+                <b>{{ userRoomsCount }} rooms</b>
+              </p>
             </div>
           </aside>
           <div class="profile__fields">
-            <form class="form">
+            <form @submit.prevent="saveProfile">
               <div class="mb-4">
                 <label class="input__label" for="name">Name</label>
                 <div class="form__field relative">
@@ -75,21 +75,20 @@
                 </div>
               </div>
               <div class="mb-4">
-                <label class="input__label" for="email">Bio</label>
+                <label class="input__label" for="bio">Bio</label>
                 <div class="form__field relative">
                   <textarea
                     class="input__field"
                     rows="5"
                     v-model="profile.bio"
-                    id="email"
-                    type="text"
-                    placeholder="bruce.wayne@imnotbatman.org"
+                    id="bio"
+                    placeholder="Tell us about yourself"
                   ></textarea>
                 </div>
               </div>
               <div class="flex items-center w-auto mb-4">
-                <button class="btn mr-3">Cancel</button>
-                <button class="bg-yellow-dark text-yellow-darker font-semibold py-2 px-4 rounded">
+                <button type="button" class="px-4 py-2 border rounded mr-3">Cancel</button>
+                <button type="submit" class="bg-yellow-400 text-yellow-800 font-semibold py-2 px-4 rounded hover:bg-yellow-500">
                   Save
                 </button>
               </div>
@@ -102,37 +101,54 @@
 </template>
 
 <script>
-import PageLayout from '@/layouts/PageLayout.vue'
-import { mapGetters } from 'vuex'
+import { reactive, computed, watch } from 'vue';
+import { useStore } from 'vuex';
+import PageLayout from '@/layouts/PageLayout.vue';
 
 export default {
   name: 'ProfilePage',
-  data() {
+  setup() {
+    const store = useStore();
+
+    const user = computed(() => store.getters.authUser);
+
+    const profile = reactive({
+      name: '',
+      username: '',
+      avatar: '',
+      email: '',
+      bio: '',
+    });
+
+    watch(user, (newUser) => {
+      if (newUser) {
+        Object.assign(profile, newUser);
+      }
+    }, { immediate: true });
+
+    const userRoomsCount = computed(() => {
+      if (user.value) {
+        return store.getters.userRoomsCount(user.value['.key']);
+      }
+      return 0;
+    });
+
+    const saveProfile = () => {
+      // Here you would dispatch an action to update the user profile
+      // For example: store.dispatch('UPDATE_USER_PROFILE', profile);
+      console.log('Saving profile...', profile);
+    };
+
     return {
-      profile: {
-        name: '',
-        username: '',
-        avatar: '',
-        email: '',
-        bio: '',
-      },
-    }
-  },
-  mounted() {
-    this.profile = this.user
-  },
-  computed: {
-    ...mapGetters({
-      user: 'authUser',
-    }),
-    userRoomsCounts() {
-      return this.$store.getters.userRoomsCount(this.user['.key'])
-    },
+      profile,
+      userRoomsCount,
+      saveProfile,
+    };
   },
   components: {
     PageLayout,
   },
-}
+};
 </script>
 <style>
 .section__profile .grid-container {

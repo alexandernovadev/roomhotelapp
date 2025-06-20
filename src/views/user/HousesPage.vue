@@ -1,35 +1,35 @@
 <template>
   <page-layout>
-    <section class="py-4 bg-teal-dark">
-      <div class="container">
+    <section class="py-4 bg-teal-700">
+      <div class="container mx-auto">
         <form class="form">
           <div class="form__field relative">
-            <i class="input-icon material-icons absolute text-grey-darker">search</i>
+            <i class="input-icon material-icons absolute text-gray-500">search</i>
             <input class="input__search" id="where" type="text" placeholder="Mexico City, Mexico" />
           </div>
         </form>
       </div>
     </section>
     <section class="section__houses py-6">
-      <div class="container">
+      <div class="container mx-auto">
         <h1 class="text-3xl font-light m-3">My Houses</h1>
         <div class="grid-container">
-          <div class="house__card mb-3" v-for="i in 4" :key="i">
+          <div class="house__card mb-3" v-for="room in userRooms" :key="room['.key']">
             <div class="house__thumbnail relative overflow-hidden">
               <img
                 class="house__image absolute w-full"
-                src="https://images.unsplash.com/photo-1432303492674-642e9d0944b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=250&q=80"
+                :src="room.featured_image"
               />
             </div>
-            <div class="house__content bg-white p-3 border">
-              <div class="house__type font-semibold text-xs uppercase text-teal-dark mb-1">
-                Private Room
+            <div class="house__content bg-white p-3 border rounded">
+              <div class="house__type font-semibold text-xs uppercase text-teal-600 mb-1">
+                {{ room.type }}
               </div>
               <div class="house__title font-bold mb-2">
-                Guest Suite in Historic Architecture Home
+                {{ room.title }}
               </div>
               <div class="house__price text-xs">
-                <span class="font-bold">$592 MXN</span> per night
+                <span class="font-bold">${{ room.price }} MXN</span> per night
               </div>
             </div>
           </div>
@@ -40,14 +40,31 @@
 </template>
 
 <script>
-import PageLayout from '@/layouts/PageLayout.vue'
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+import PageLayout from '@/layouts/PageLayout.vue';
 
 export default {
   name: 'HousesPages',
+  setup() {
+    const store = useStore();
+    const user = computed(() => store.getters.authUser);
+
+    const userRooms = computed(() => {
+      if (!user.value || !user.value.rooms) {
+        return [];
+      }
+      return Object.values(user.value.rooms).map(roomId => store.state.rooms[roomId]).filter(Boolean);
+    });
+
+    return {
+      userRooms,
+    };
+  },
   components: {
     PageLayout,
   },
-}
+};
 </script>
 <style>
 .section__houses .grid-container {

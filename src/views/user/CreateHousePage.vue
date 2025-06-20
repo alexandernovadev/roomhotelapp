@@ -1,26 +1,26 @@
 <template>
   <page-layout>
-    <section class="py-4 bg-teal-dark">
-      <div class="container">
+    <section class="py-4 bg-teal-700">
+      <div class="container mx-auto">
         <form class="form">
           <div class="form__field relative">
-            <i class="input-icon material-icons absolute text-grey-darker">search</i>
+            <i class="input-icon material-icons absolute text-gray-500">search</i>
             <input class="input__search" id="where" type="text" placeholder="Mexico City, Mexico" />
           </div>
         </form>
       </div>
     </section>
     <section class="section__create py-6">
-      <div class="container">
+      <div class="container mx-auto">
         <h1 class="text-3xl">Publish a new room</h1>
-        <form>
+        <form @submit.prevent="save">
           <div class="mb-4">
             <label class="input__label">Title</label>
             <input
               v-model="publication.title"
               class="input__field"
               type="text"
-              placeholder="Bruce Wayne"
+              placeholder="Amazing Appartment in the City Center"
             />
           </div>
           <div class="mb-4">
@@ -29,7 +29,7 @@
               v-model="publication.description"
               class="input__field"
               rows="10"
-              placeholder="Bruce Wayne"
+              placeholder="Describe the features and amenities of the room."
             ></textarea>
           </div>
           <div class="mb-4">
@@ -43,8 +43,8 @@
           </div>
           <div class="mb-4 text-right">
             <button
-              @click.prevent="save"
-              class="w-full bg-yellow-dark text-yellow-darker font-semibold py-3 px-6 rounded"
+              type="submit"
+              class="w-full bg-yellow-400 text-yellow-800 font-semibold py-3 px-6 rounded hover:bg-yellow-500"
             >
               Publish
             </button>
@@ -56,36 +56,44 @@
 </template>
 
 <script>
-import PageLayout from '@/layouts/PageLayout.vue'
+import { reactive } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+import PageLayout from '@/layouts/PageLayout.vue';
 
 export default {
   name: 'CreateHousePage',
-  data() {
-    return {
-      publication: {
-        title: '',
-        description: '',
-        featuredImage: '',
-      },
-    }
-  },
-  methods: {
-    save() {
-      const { title, description, featuredImage } = this.publication
+  setup() {
+    const store = useStore();
+    const router = useRouter();
+
+    const publication = reactive({
+      title: '',
+      description: '',
+      featuredImage: '',
+    });
+
+    const save = () => {
+      const { title, description, featuredImage } = publication;
       const room = {
         title,
         description,
         featured_image: featuredImage,
-        publishedAt: Date.now(),
-      }
+        // 'publishedAt' is handled by the store action
+      };
 
-      this.$store.dispatch('CREATE_ROOM', room).then(() => {
-        this.$router.push({ name: 'SearchPage' })
-      })
-    },
+      store.dispatch('CREATE_ROOM', room).then(() => {
+        router.push({ name: 'SearchPage' });
+      });
+    };
+
+    return {
+      publication,
+      save,
+    };
   },
   components: {
     PageLayout,
   },
-}
+};
 </script>
