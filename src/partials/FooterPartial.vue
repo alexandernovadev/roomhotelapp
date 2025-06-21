@@ -6,7 +6,7 @@
         <div class="lg:col-span-2">
           <h3 class="text-2xl font-bold mb-4">Adventures App</h3>
           <p class="text-cyan-100 text-sm leading-relaxed mb-6">
-            Discover entire homes and private rooms perfect for any trip. Experience unique accommodations around the world.
+            Esta aplicación es un proyecto personal creado para demostrar mis habilidades como desarrollador de software. Construido con Vue.js, Firebase y mucho ❤️, este proyecto refleja mi pasión por crear experiencias de usuario limpias y funcionales.
           </p>
           <div class="flex space-x-4">
             <a href="#" class="text-cyan-100 hover:text-white transition-colors duration-200">

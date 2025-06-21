@@ -171,6 +171,8 @@ export default {
     // Use composables
     const { getAmenityLabel } = useAmenities()
 
+    const user = computed(() => store.getters.authUser)
+
     const userRooms = computed(() => {
       if (!user.value || !user.value.rooms) {
         return []

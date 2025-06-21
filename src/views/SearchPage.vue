@@ -3,39 +3,46 @@
     <!-- Search Header -->
     <PageHeader
       title="Encuentra tu lugar ideal"
-      subtitle=""
+      subtitle="Busca entre cientos de lugares increíbles"
     >
       <template #right>
-        <form @submit.prevent="performSearch" class="space-y-4 w-full max-w-4xl">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <form
+          @submit.prevent="performSearch"
+          class="bg-white/20 backdrop-blur-md p-4 rounded-xl w-full max-w-4xl"
+        >
+          <div class="flex flex-col lg:flex-row items-center gap-4">
             <Input
               v-model="searchQuery.location"
               label="Ubicación"
               placeholder="Bogotá, Colombia"
               icon="location_on"
+              variant="on-dark"
+              class="flex-grow"
             />
             <Input
               v-model="searchQuery.checkIn"
               type="date"
               label="Llegada"
               icon="calendar_today"
+              variant="on-dark"
+              class="w-full lg:w-auto"
             />
             <Input
               v-model="searchQuery.checkOut"
               type="date"
               label="Salida"
               icon="calendar_today"
+              variant="on-dark"
+              class="w-full lg:w-auto"
             />
-          </div>
-          <div class="flex justify-center">
             <Button
               type="submit"
               variant="primary"
               :loading="isSearching"
-              class="px-8"
+              class="w-full lg:w-auto flex-shrink-0 px-6 py-3"
             >
               <i class="material-icons mr-2">search</i>
-              {{ isSearching ? 'Buscando...' : 'Buscar Habitaciones' }}
+              <span>{{ isSearching ? 'Buscando...' : 'Buscar' }}</span>
             </Button>
           </div>
         </form>
@@ -44,160 +51,168 @@
 
     <!-- Filters and Results -->
     <PageContainer>
-      <div class="flex flex-col lg:flex-row gap-8">
+      <div class="flex flex-col lg:flex-row gap-8 max-w-7xl mx-auto">
         <!-- Filters Sidebar -->
-        <aside class="lg:w-1/4">
-          <div class="card p-6 sticky top-4">
-            <h3 class="text-lg font-semibold text-gray-800 mb-4">Filtros</h3>
+        <aside class="lg:w-80 flex-shrink-0">
+          <div class="bg-white rounded-xl shadow-lg p-6 sticky top-4 border border-gray-100">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl font-bold text-gray-800">Filtros</h3>
+              <button
+                @click="clearFilters"
+                class="text-cyan-600 hover:text-cyan-700 text-sm font-medium"
+              >
+                Limpiar todo
+              </button>
+            </div>
 
             <!-- Price Range -->
-            <div class="mb-6">
-              <h4 class="font-medium text-gray-700 mb-3">Rango de Precio</h4>
-              <div class="space-y-2">
-                <label class="flex items-center space-x-2">
+            <div class="mb-8">
+              <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                <i class="material-icons text-cyan-600 mr-2 text-lg">attach_money</i>
+                Rango de Precio
+              </h4>
+              <div class="space-y-3">
+                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.priceRange"
                     type="radio"
                     value="0-50000"
-                    class="text-cyan-600"
+                    class="w-4 h-4 text-cyan-600 border-gray-300 focus:ring-cyan-500"
                   />
-                  <span class="text-sm">$0 - $50,000</span>
+                  <span class="ml-3 text-gray-700">$0 - $50,000</span>
                 </label>
-                <label class="flex items-center space-x-2">
+                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.priceRange"
                     type="radio"
                     value="50000-100000"
-                    class="text-cyan-600"
+                    class="w-4 h-4 text-cyan-600 border-gray-300 focus:ring-cyan-500"
                   />
-                  <span class="text-sm">$50,000 - $100,000</span>
+                  <span class="ml-3 text-gray-700">$50,000 - $100,000</span>
                 </label>
-                <label class="flex items-center space-x-2">
+                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.priceRange"
                     type="radio"
                     value="100000-200000"
-                    class="text-cyan-600"
+                    class="w-4 h-4 text-cyan-600 border-gray-300 focus:ring-cyan-500"
                   />
-                  <span class="text-sm">$100,000 - $200,000</span>
+                  <span class="ml-3 text-gray-700">$100,000 - $200,000</span>
                 </label>
-                <label class="flex items-center space-x-2">
+                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.priceRange"
                     type="radio"
                     value="200000+"
-                    class="text-cyan-600"
+                    class="w-4 h-4 text-cyan-600 border-gray-300 focus:ring-cyan-500"
                   />
-                  <span class="text-sm">$200,000+</span>
+                  <span class="ml-3 text-gray-700">$200,000+</span>
                 </label>
               </div>
             </div>
 
             <!-- Room Type -->
-            <div class="mb-6">
-              <h4 class="font-medium text-gray-700 mb-3">Tipo de Habitación</h4>
-              <div class="space-y-2">
-                <label class="flex items-center space-x-2">
+            <div class="mb-8">
+              <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                <i class="material-icons text-cyan-600 mr-2 text-lg">home</i>
+                Tipo de Habitación
+              </h4>
+              <div class="space-y-3">
+                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.roomTypes"
                     type="checkbox"
                     value="apartamento"
-                    class="text-cyan-600"
+                    class="w-4 h-4 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
                   />
-                  <span class="text-sm">Apartamento</span>
+                  <span class="ml-3 text-gray-700">Apartamento</span>
                 </label>
-                <label class="flex items-center space-x-2">
+                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.roomTypes"
                     type="checkbox"
                     value="casa"
-                    class="text-cyan-600"
+                    class="w-4 h-4 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
                   />
-                  <span class="text-sm">Casa</span>
+                  <span class="ml-3 text-gray-700">Casa</span>
                 </label>
-                <label class="flex items-center space-x-2">
+                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.roomTypes"
                     type="checkbox"
                     value="habitacion"
-                    class="text-cyan-600"
+                    class="w-4 h-4 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
                   />
-                  <span class="text-sm">Habitación Privada</span>
+                  <span class="ml-3 text-gray-700">Habitación Privada</span>
                 </label>
               </div>
             </div>
 
             <!-- Amenities -->
-            <div class="mb-6">
-              <h4 class="font-medium text-gray-700 mb-3">Amenidades</h4>
-              <div class="space-y-2">
-                <label class="flex items-center space-x-2">
+            <div class="mb-8">
+              <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                <i class="material-icons text-cyan-600 mr-2 text-lg">star</i>
+                Amenidades
+              </h4>
+              <div class="space-y-3">
+                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.amenities"
                     type="checkbox"
                     value="wifi"
-                    class="text-cyan-600"
+                    class="w-4 h-4 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
                   />
-                  <span class="text-sm">WiFi</span>
+                  <span class="ml-3 text-gray-700">WiFi</span>
                 </label>
-                <label class="flex items-center space-x-2">
+                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.amenities"
                     type="checkbox"
                     value="kitchen"
-                    class="text-cyan-600"
+                    class="w-4 h-4 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
                   />
-                  <span class="text-sm">Cocina</span>
+                  <span class="ml-3 text-gray-700">Cocina</span>
                 </label>
-                <label class="flex items-center space-x-2">
+                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.amenities"
                     type="checkbox"
                     value="parking"
-                    class="text-cyan-600"
+                    class="w-4 h-4 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
                   />
-                  <span class="text-sm">Estacionamiento</span>
+                  <span class="ml-3 text-gray-700">Estacionamiento</span>
                 </label>
-                <label class="flex items-center space-x-2">
+                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.amenities"
                     type="checkbox"
                     value="ac"
-                    class="text-cyan-600"
+                    class="w-4 h-4 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
                   />
-                  <span class="text-sm">Aire Acondicionado</span>
+                  <span class="ml-3 text-gray-700">Aire Acondicionado</span>
                 </label>
               </div>
             </div>
-
-            <!-- Clear Filters -->
-            <Button
-              @click="clearFilters"
-              variant="secondary"
-              class="w-full"
-            >
-              Limpiar Filtros
-            </Button>
           </div>
         </aside>
 
         <!-- Results -->
-        <main class="lg:w-3/4">
+        <main class="flex-1 min-w-0">
           <!-- Results Header -->
-          <div class="flex items-center justify-between mb-6">
-            <div>
-              <h2 class="text-2xl font-semibold text-gray-800">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <div class="mb-4 sm:mb-0">
+              <h2 class="text-2xl font-bold text-gray-800">
                 {{ filteredRooms.length }} habitaciones encontradas
               </h2>
-              <p class="text-gray-600 text-sm">
+              <p class="text-gray-600 mt-1">
                 {{ searchQuery.location ? `en ${searchQuery.location}` : 'en todas las ubicaciones' }}
               </p>
             </div>
-            <div class="flex items-center space-x-2">
-              <span class="text-sm text-gray-600">Ordenar por:</span>
+            <div class="flex items-center space-x-3">
+              <span class="text-sm font-medium text-gray-700">Ordenar por:</span>
               <select
                 v-model="sortBy"
-                class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 bg-white"
               >
                 <option value="relevance">Relevancia</option>
                 <option value="price-low">Precio: Menor a Mayor</option>
@@ -208,80 +223,89 @@
           </div>
 
           <!-- Empty State -->
-          <div v-if="filteredRooms.length === 0" class="text-center py-12">
-            <i class="material-icons text-6xl text-gray-300 mb-4">search_off</i>
-            <h3 class="text-xl font-semibold text-gray-600 mb-2">No se encontraron habitaciones</h3>
-            <p class="text-gray-500 mb-6">Intenta ajustar tus filtros o buscar en otra ubicación</p>
-            <Button @click="clearFilters" variant="primary">
-              Limpiar Filtros
-            </Button>
+          <div v-if="filteredRooms.length === 0" class="text-center py-16 bg-white rounded-xl shadow-sm border border-gray-100">
+            <div class="max-w-md mx-auto">
+              <i class="material-icons text-8xl text-gray-200 mb-6">search_off</i>
+              <h3 class="text-2xl font-bold text-gray-600 mb-3">No se encontraron habitaciones</h3>
+              <p class="text-gray-500 mb-8 text-lg">Intenta ajustar tus filtros o buscar en otra ubicación</p>
+              <Button @click="clearFilters" variant="primary" class="px-8 py-3">
+                Limpiar Filtros
+              </Button>
+            </div>
           </div>
 
           <!-- Rooms Grid -->
-          <div v-else class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div v-else class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             <div
               v-for="room in filteredRooms"
               :key="room['.key']"
-              class="card-hover"
+              class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100"
             >
               <!-- Room Image -->
-              <div class="relative h-48 overflow-hidden">
+              <div class="relative h-56 overflow-hidden">
                 <img
                   :src="room.featured_image"
                   :alt="room.title"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                 />
-                <div class="absolute top-3 left-3">
-                  <span class="bg-white bg-opacity-90 text-cyan-600 text-xs font-semibold px-2 py-1 rounded-full">
+                <div class="absolute top-4 left-4">
+                  <span class="bg-white bg-opacity-95 text-cyan-600 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
                     {{ room.type || 'Habitación' }}
                   </span>
                 </div>
-                <div class="absolute top-3 right-3">
+                <div class="absolute top-4 right-4">
                   <button
                     @click="toggleFavorite(room)"
-                    class="bg-white bg-opacity-90 p-2 rounded-full hover:bg-opacity-100 transition-all duration-200"
+                    class="bg-white bg-opacity-95 p-2.5 rounded-full hover:bg-opacity-100 transition-all duration-200 shadow-sm hover:shadow-md"
                   >
-                    <i class="material-icons text-sm" :class="isFavorite(room) ? 'text-red-500' : 'text-gray-400'">
+                    <i class="material-icons text-lg" :class="isFavorite(room) ? 'text-red-500' : 'text-gray-400'">
                       {{ isFavorite(room) ? 'favorite' : 'favorite_border' }}
                     </i>
                   </button>
                 </div>
+                <div class="absolute bottom-4 left-4 right-4">
+                  <div class="bg-white bg-opacity-95 rounded-lg p-3 shadow-sm">
+                    <div class="text-2xl font-bold text-gray-800">
+                      ${{ formatPrice(room.price) }}
+                      <span class="text-sm font-normal text-gray-500">/ noche</span>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <!-- Room Content -->
-              <div class="p-4">
-                <h3 class="font-semibold text-gray-800 text-lg mb-2 line-clamp-2">
+              <div class="p-6">
+                <h3 class="font-bold text-gray-800 text-xl mb-3 line-clamp-2">
                   {{ room.title }}
                 </h3>
 
-                <div class="flex items-center text-gray-500 text-sm mb-3">
-                  <i class="material-icons text-sm mr-1">location_on</i>
-                  <span>{{ room.city || 'Ubicación no especificada' }}</span>
+                <div class="flex items-center text-gray-500 mb-4">
+                  <i class="material-icons text-cyan-600 mr-2">location_on</i>
+                  <span class="text-sm">{{ room.city || 'Ubicación no especificada' }}</span>
                 </div>
 
                 <!-- Amenities -->
-                <div v-if="room.amenities" class="flex flex-wrap gap-1 mb-4">
+                <div v-if="room.amenities" class="flex flex-wrap gap-2 mb-6">
                   <span
                     v-for="(value, key) in room.amenities"
                     :key="key"
                     v-show="value"
-                    class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs"
+                    class="bg-cyan-50 text-cyan-700 px-3 py-1.5 rounded-full text-xs font-medium"
                   >
                     {{ getAmenityLabel(key) }}
                   </span>
                 </div>
 
-                <div class="flex items-center justify-between">
-                  <div class="text-sm text-gray-600">
-                    <span class="font-bold text-lg text-gray-900">
-                      ${{ formatPrice(room.price) }}
-                    </span>
-                    <span class="text-gray-500"> / noche</span>
+                <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <div class="text-sm text-gray-500">
+                    <i class="material-icons text-sm mr-1">visibility</i>
+                    {{ Math.floor(Math.random() * 100) + 50 }} vistas
                   </div>
                   <Button
                     variant="primary"
                     size="sm"
                     @click="viewRoom(room)"
+                    class="px-6 py-2"
                   >
                     Ver Detalles
                   </Button>
@@ -291,11 +315,12 @@
           </div>
 
           <!-- Load More -->
-          <div v-if="hasMoreRooms" class="text-center mt-8">
+          <div v-if="hasMoreRooms" class="text-center mt-12">
             <Button
               @click="loadMore"
               variant="secondary"
               :loading="isLoadingMore"
+              class="px-8 py-3"
             >
               {{ isLoadingMore ? 'Cargando...' : 'Cargar Más' }}
             </Button>
@@ -354,7 +379,9 @@ export default {
     const rooms = computed(() => store.getters.rooms)
 
     const filteredRooms = computed(() => {
-      let filtered = [...rooms.value]
+      // Convert rooms object to array
+      const roomsArray = rooms.value ? Object.values(rooms.value) : []
+      let filtered = [...roomsArray]
 
       // Filter by location
       if (searchQuery.location) {

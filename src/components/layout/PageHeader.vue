@@ -1,14 +1,14 @@
 <template>
   <section class="bg-gradient-to-r from-cyan-600 to-cyan-700 py-8">
     <div class="container mx-auto px-4">
-      <div class="flex items-center justify-between">
-        <div class="flex-1">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+        <div class="flex-1 mb-6 lg:mb-0">
           <h1 class="text-3xl font-bold text-white">{{ title }}</h1>
           <p v-if="subtitle" class="text-cyan-100 mt-2">{{ subtitle }}</p>
         </div>
 
         <!-- Right side content -->
-        <div v-if="$slots.right" class="flex items-center space-x-4">
+        <div v-if="$slots.right" class="flex items-center">
           <slot name="right" />
         </div>
 

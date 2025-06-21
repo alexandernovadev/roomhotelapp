@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container" :class="containerClasses">
+  <div class="container mx-auto px-4" :class="containerClasses">
     <slot />
   </div>
 </template>

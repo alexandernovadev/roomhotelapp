@@ -3,7 +3,7 @@
     <label
       v-if="label"
       :for="uniqueId"
-      class="block text-sm font-medium text-gray-700 mb-1"
+      :class="labelClasses"
     >
       {{ label }}
       <span v-if="required" class="text-red-500">*</span>
@@ -28,7 +28,7 @@
         v-if="icon"
         class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
       >
-        <i class="material-icons text-gray-400">{{ icon }}</i>
+        <i class="material-icons" :class="iconClasses">{{ icon }}</i>
       </div>
       <div
         v-if="error"
@@ -45,7 +45,8 @@
     </p>
     <p
       v-else-if="helpText"
-      class="mt-1 text-sm text-gray-500"
+      class="mt-1 text-sm"
+      :class="helpTextClasses"
     >
       {{ helpText }}
     </p>
@@ -114,6 +115,11 @@ export default {
       type: String,
       default: 'md',
       validator: (value) => ['sm', 'md', 'lg'].includes(value)
+    },
+    variant: {
+      type: String,
+      default: 'default',
+      validator: (value) => ['default', 'on-dark'].includes(value)
     }
   },
   emits: ['update:modelValue', 'blur', 'focus'],
@@ -124,8 +130,22 @@ export default {
       return `input-${Math.random().toString(36).substr(2, 9)}`
     })
 
+    const isDarkMode = computed(() => props.variant === 'on-dark');
+
+    const labelClasses = computed(() => {
+      return isDarkMode.value
+        ? 'block text-sm font-medium text-white mb-1'
+        : 'block text-sm font-medium text-gray-700 mb-1'
+    })
+
     const inputClasses = computed(() => {
-      const baseClasses = 'w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-0 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed'
+      let baseClasses = 'w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-0 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed'
+
+      if (isDarkMode.value) {
+        baseClasses += ' bg-white/90 border-white/40 text-gray-800 placeholder-gray-500'
+      } else {
+        baseClasses += ' bg-white text-gray-900 placeholder-gray-400'
+      }
 
       const sizeClasses = {
         sm: 'px-3 py-1.5 text-sm',
@@ -135,12 +155,22 @@ export default {
 
       const stateClasses = props.error
         ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
-        : 'border-gray-300 focus:border-cyan-500 focus:ring-cyan-500'
+        : isDarkMode.value
+          ? 'focus:border-white focus:ring-white'
+          : 'border-gray-300 focus:border-cyan-500 focus:ring-cyan-500'
 
       const iconPadding = props.icon ? 'pl-10' : ''
       const errorPadding = props.error ? 'pr-10' : ''
 
       return `${baseClasses} ${sizeClasses[props.size]} ${stateClasses} ${iconPadding} ${errorPadding}`
+    })
+
+    const iconClasses = computed(() => {
+      return isDarkMode.value ? 'text-gray-600' : 'text-gray-400'
+    })
+
+    const helpTextClasses = computed(() => {
+      return isDarkMode.value ? 'text-gray-200' : 'text-gray-500'
     })
 
     const handleInput = (event) => {
@@ -157,7 +187,10 @@ export default {
 
     return {
       uniqueId,
+      labelClasses,
       inputClasses,
+      iconClasses,
+      helpTextClasses,
       handleInput,
       handleBlur,
       handleFocus

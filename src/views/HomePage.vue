@@ -64,7 +64,10 @@ export default {
   setup() {
     const store = useStore();
 
-    const rooms = computed(() => store.getters.rooms);
+    const rooms = computed(() => {
+      const roomsObject = store.getters.rooms
+      return roomsObject ? Object.values(roomsObject) : []
+    });
 
     onMounted(() => {
       store.dispatch('FETCH_ROOMS', 12);
