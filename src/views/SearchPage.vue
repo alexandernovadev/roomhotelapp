@@ -480,6 +480,8 @@ export default {
     }
 
     onMounted(() => {
+      // Reset scroll position to top
+      window.scrollTo(0, 0)
       store.dispatch('FETCH_ROOMS')
     })
 

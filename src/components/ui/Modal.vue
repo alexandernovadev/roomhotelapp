@@ -76,7 +76,7 @@
             </div>
 
             <!-- Contenido del modal -->
-            <div class="p-6">
+            <div class="p-6 max-h-[70vh] overflow-y-auto">
               <slot />
             </div>
 
@@ -110,7 +110,7 @@
 </template>
 
 <script>
-import { computed, onMounted, onUnmounted } from 'vue'
+import { computed, onMounted, onUnmounted, watch } from 'vue'
 import Button from './Button.vue'
 
 export default {
@@ -249,17 +249,49 @@ export default {
       }
     }
 
+    // Controlar el scroll del body cuando el modal está abierto
+    const disableBodyScroll = () => {
+      document.body.style.overflow = 'hidden'
+      document.body.style.paddingRight = 'var(--scrollbar-width, 0px)'
+    }
+
+    const enableBodyScroll = () => {
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
+    }
+
+    // Observar cambios en el estado del modal
+    const watchModalState = () => {
+      if (isOpen.value) {
+        disableBodyScroll()
+      } else {
+        enableBodyScroll()
+      }
+    }
+
+    // Calcular el ancho del scrollbar para evitar el salto del layout
+    const calculateScrollbarWidth = () => {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+      document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`)
+    }
+
     onMounted(() => {
       if (props.closeOnEscape) {
         document.addEventListener('keydown', handleEscape)
       }
+      calculateScrollbarWidth()
+      watchModalState()
     })
 
     onUnmounted(() => {
       if (props.closeOnEscape) {
         document.removeEventListener('keydown', handleEscape)
       }
+      enableBodyScroll() // Asegurar que el scroll se restaure al desmontar
     })
+
+    // Observar cambios en el estado del modal
+    watch(isOpen, watchModalState)
 
     return {
       isOpen,
