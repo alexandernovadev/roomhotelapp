@@ -1,0 +1,82 @@
+/* CSS Variables for consistent styling */
+
+:root {
+  /* Colors */
+  --color-primary: #0891b2; /* cyan-600 */
+  --color-primary-dark: #0e7490; /* cyan-700 */
+  --color-primary-light: #06b6d4; /* cyan-500 */
+  --color-primary-50: #ecfeff; /* cyan-50 */
+  --color-primary-100: #cffafe; /* cyan-100 */
+  
+  /* Text Colors */
+  --color-text-primary: #1f2937; /* gray-800 */
+  --color-text-secondary: #6b7280; /* gray-500 */
+  --color-text-muted: #9ca3af; /* gray-400 */
+  --color-text-white: #ffffff;
+  
+  /* Background Colors */
+  --color-bg-white: #ffffff;
+  --color-bg-gray-50: #f9fafb;
+  --color-bg-gray-100: #f3f4f6;
+  
+  /* Border Colors */
+  --color-border-gray-200: #e5e7eb;
+  --color-border-gray-300: #d1d5db;
+  
+  /* Shadow */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem; /* 6px */
+  --radius-md: 0.5rem; /* 8px */
+  --radius-lg: 0.75rem; /* 12px */
+  --radius-xl: 1rem; /* 16px */
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem; /* 8px */
+  --spacing-md: 1rem; /* 16px */
+  --spacing-lg: 1.5rem; /* 24px */
+  --spacing-xl: 2rem; /* 32px */
+  --spacing-2xl: 3rem; /* 48px */
+  
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 200ms ease-in-out;
+  --transition-slow: 300ms ease-in-out;
+}
+
+/* Utility Classes */
+.page-container {
+  @apply container mx-auto px-4;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-md;
+}
+
+.card-hover {
+  @apply bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200;
+}
+
+.btn-primary {
+  @apply bg-cyan-600 hover:bg-cyan-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+}
+
+.input-field {
+  @apply w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500;
+}
+
+.text-gradient {
+  @apply bg-gradient-to-r from-cyan-600 to-cyan-700 bg-clip-text text-transparent;
+}
+
+.bg-gradient-primary {
+  @apply bg-gradient-to-r from-cyan-600 to-cyan-700;
+} 

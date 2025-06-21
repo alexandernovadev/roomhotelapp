@@ -46,12 +46,19 @@ export const slugify = (str) => {
 }
 
 // Number helpers
-export const formatPrice = (price) => {
-  if (!price) return '$0'
-  return new Intl.NumberFormat('es-ES', {
-    style: 'currency',
-    currency: 'USD'
-  }).format(price)
+export const formatPrice = (price, currency = 'COP', locale = 'es-CO') => {
+  if (!price) return '0'
+
+  // If currency is provided, format with currency
+  if (currency) {
+    return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency: currency
+    }).format(price)
+  }
+
+  // Otherwise, just format the number
+  return new Intl.NumberFormat(locale).format(price)
 }
 
 export const formatNumber = (num) => {

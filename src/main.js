@@ -5,6 +5,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+// Import CSS variables
+import './styles/variables.css'
+
 // Auth state listener
 onAuthStateChanged(auth, async (user) => {
   if (user) {
