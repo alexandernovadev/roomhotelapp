@@ -135,6 +135,19 @@ export default {
         return
       }
 
+      // Validar longitud mínima de contraseña
+      if (form.password && form.password.length < 6) {
+        setError('password', 'La contraseña debe tener al menos 6 caracteres')
+        return
+      }
+
+      // Validar formato de email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (form.email && !emailRegex.test(form.email)) {
+        setError('email', 'El email no tiene un formato válido')
+        return
+      }
+
       if (validateForm(validationRules)) {
         emit('submit', { ...form })
       }

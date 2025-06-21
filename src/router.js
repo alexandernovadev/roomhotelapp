@@ -61,14 +61,20 @@ const router = createRouter({
 })
 
 // Navigation guard para proteger rutas
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+
+  // Verificar si hay un usuario autenticado
   const isAuthenticated = auth.currentUser
 
   if (requiresAuth && !isAuthenticated) {
     // Redirigir a la página principal si no está autenticado
     next({ name: 'HomePage' })
+  } else if (requiresAuth && isAuthenticated) {
+    // Si requiere autenticación y el usuario está autenticado, permitir acceso
+    next()
   } else {
+    // Para rutas que no requieren autenticación
     next()
   }
 })

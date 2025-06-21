@@ -6,7 +6,7 @@
           <div class="flex items-center" v-if="user">
             <!-- Botón New Room -->
             <router-link
-              :to="{ name: 'CreateHomePage' }"
+              :to="{ name: ROUTES.CREATE_HOUSE }"
               class="no-underline mr-4 flex items-center text-gray-800 hover:text-gray-600 transition-colors duration-200"
             >
               <i class="material-icons">add</i>

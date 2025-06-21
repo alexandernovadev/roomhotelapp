@@ -359,7 +359,7 @@ export default {
         router.push({ name: 'HousesPages' })
       } catch (error) {
         console.error('Error creating room:', error)
-        alert('Error al crear la habitación')
+        alert('Error al crear la habitación. Por favor, intenta nuevamente.')
       } finally {
         isSubmitting.value = false
       }

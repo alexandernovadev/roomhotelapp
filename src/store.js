@@ -46,24 +46,29 @@ export default createStore({
 
   actions: {
     CREATE_ROOM: async ({ state, commit }, room) => {
-      const newRoom = { ...room }
-      const roomsRef = ref(db, 'rooms')
-      const newRoomRef = push(roomsRef)
-      const roomId = newRoomRef.key
+      try {
+        const newRoom = { ...room }
+        const roomsRef = ref(db, 'rooms')
+        const newRoomRef = push(roomsRef)
+        const roomId = newRoomRef.key
 
-      newRoom.userId = state.authId
-      newRoom.publishedAt = Math.floor(Date.now() / 1000)
-      newRoom.meta = { likes: 0 }
+        newRoom.userId = state.authId
+        newRoom.publishedAt = Math.floor(Date.now() / 1000)
+        newRoom.meta = { likes: 0 }
 
-      const updates = {}
-      updates[`/rooms/${roomId}`] = newRoom
-      updates[`/users/${newRoom.userId}/rooms/${roomId}`] = roomId
+        const updates = {}
+        updates[`/rooms/${roomId}`] = newRoom
+        updates[`/users/${newRoom.userId}/rooms/${roomId}`] = roomId
 
-      await update(ref(db), updates)
+        await update(ref(db), updates)
 
-      commit('SET_ROOM', { newRoom, roomId })
-      commit('APPEND_ROOM_TO_USER', { roomId, userId: newRoom.userId })
-      return state.rooms[roomId]
+        commit('SET_ROOM', { newRoom, roomId })
+        commit('APPEND_ROOM_TO_USER', { roomId, userId: newRoom.userId })
+        return state.rooms[roomId]
+      } catch (error) {
+        console.error('Error creating room:', error)
+        throw error
+      }
     },
 
     FETCH_ROOMS: ({ commit }, limit) => new Promise((resolve, reject) => {
