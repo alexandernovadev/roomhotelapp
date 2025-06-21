@@ -2,14 +2,14 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
 
-// Your web app's Firebase configuration - move this from main.js
+// Your web app's Firebase configuration - using environment variables
 const firebaseConfig = {
-  apiKey: 'AIzaSyCfsNo8UySXjVBv83qzYYw538WsaHf-C6E',
-  authDomain: 'roomsvue.firebaseapp.com',
-  projectId: 'roomsvue',
-  storageBucket: 'roomsvue.appspot.com',
-  messagingSenderId: '326652607881',
-  appId: '1:326652607881:web:6f079aff8dbbd5fa5b3558',
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase and export the instances
