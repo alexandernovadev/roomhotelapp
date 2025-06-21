@@ -7,14 +7,14 @@
             <!-- Botón New Room -->
             <router-link
               :to="{ name: ROUTES.CREATE_HOUSE }"
-              class="no-underline mr-4 flex items-center text-gray-800 hover:text-gray-600 transition-colors duration-200"
+              class="no-underline mr-4 flex items-center text-neutral-800 hover:text-neutral-600 transition-colors duration-200"
             >
               <i class="material-icons">add</i>
               <span class="ml-1">New Room</span>
             </router-link>
 
             <!-- Botón de notificaciones -->
-            <button class="mr-4 flex items-center text-gray-800 hover:text-gray-600 transition-colors duration-200">
+            <button class="mr-4 flex items-center text-neutral-800 hover:text-neutral-600 transition-colors duration-200">
               <i class="material-icons">notifications</i>
             </button>
 

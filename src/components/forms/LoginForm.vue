@@ -30,9 +30,9 @@
               id="login-remember"
               v-model="form.remember"
               type="checkbox"
-              class="h-4 w-4 text-cyan-600 focus:ring-cyan-500 border-gray-300 rounded"
+              class="h-4 w-4 text-cyan-600 focus:ring-cyan-500 border-neutral-300 rounded"
             />
-            <label for="login-remember" class="ml-2 block text-sm text-gray-700">
+            <label for="login-remember" class="ml-2 block text-sm text-neutral-700">
               Recordarme
             </label>
           </div>
@@ -44,7 +44,7 @@
     </form>
 
     <!-- Botones del formulario -->
-    <div class="flex items-center justify-end space-x-3 pt-4 border-t border-gray-100">
+    <div class="flex items-center justify-end space-x-3 pt-4 border-t border-neutral-100">
       <Button
         variant="secondary"
         @click="$emit('cancel')"

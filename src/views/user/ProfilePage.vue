@@ -27,8 +27,8 @@
                   <i class="material-icons text-sm">edit</i>
                 </button>
               </div>
-              <h3 class="text-xl font-semibold text-gray-800 mt-4">{{ profile.name || 'Usuario' }}</h3>
-              <p class="text-gray-500 text-sm">{{ profile.email }}</p>
+              <h3 class="text-xl font-semibold text-neutral-800 mt-4">{{ profile.name || 'Usuario' }}</h3>
+              <p class="text-neutral-500 text-sm">{{ profile.email }}</p>
               <div class="mt-4 p-3 bg-cyan-50 rounded-lg">
                 <div class="text-2xl font-bold text-cyan-600">{{ userRoomsCount }}</div>
                 <div class="text-sm text-cyan-700">Habitaciones</div>
@@ -40,7 +40,7 @@
         <!-- Main Content -->
         <div class="lg:col-span-2">
           <div class="card p-6">
-            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Información Personal</h2>
+            <h2 class="text-2xl font-semibold text-neutral-800 mb-6">Información Personal</h2>
 
             <form @submit.prevent="saveProfile" class="space-y-6">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -93,7 +93,7 @@
                 help-text="Máximo 500 caracteres"
               />
 
-              <div class="flex items-center justify-end space-x-4 pt-6 border-t border-gray-100">
+              <div class="flex items-center justify-end space-x-4 pt-6 border-t border-neutral-100">
                 <Button
                   type="button"
                   variant="secondary"

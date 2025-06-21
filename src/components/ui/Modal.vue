@@ -35,7 +35,7 @@
             <!-- Header del modal -->
             <div
               v-if="showHeader"
-              class="flex items-center justify-between p-6 border-b border-gray-100"
+              class="flex items-center justify-between p-6 border-b border-neutral-100"
               :class="headerClasses"
             >
               <div class="flex items-center space-x-3">
@@ -49,13 +49,13 @@
                 <div>
                   <h3
                     v-if="title"
-                    class="text-lg font-semibold text-gray-900"
+                    class="text-lg font-semibold text-neutral-900"
                   >
                     {{ title }}
                   </h3>
                   <p
                     v-if="subtitle"
-                    class="text-sm text-gray-500 mt-1"
+                    class="text-sm text-neutral-500 mt-1"
                   >
                     {{ subtitle }}
                   </p>
@@ -66,7 +66,7 @@
               <button
                 v-if="showCloseButton"
                 @click="closeModal"
-                class="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-full transition-colors duration-200"
+                class="p-2 text-neutral-400 hover:text-neutral-600 hover:bg-neutral-50 rounded-full transition-colors duration-200"
                 :aria-label="closeButtonLabel"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,7 +83,7 @@
             <!-- Footer del modal -->
             <div
               v-if="$slots.footer || showDefaultFooter"
-              class="flex items-center justify-end space-x-3 p-6 border-t border-gray-50"
+              class="flex items-center justify-end space-x-3 p-6 border-t border-neutral-50"
             >
               <slot name="footer">
                 <Button

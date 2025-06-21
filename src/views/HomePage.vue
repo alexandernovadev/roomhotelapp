@@ -1,7 +1,7 @@
 <template>
   <default-layout>
     <section class="container py-6 mx-auto">
-      <h1 class="text-3xl font-light text-gray-800 mb-3">Recommended</h1>
+      <h1 class="text-3xl font-light text-neutral-800 mb-3">Recommended</h1>
       <div class="section">
         <!-- Here
 
@@ -16,7 +16,7 @@
       </div>
     </section>
     <section class="container py-6 mx-auto">
-      <h1 class="text-3xl font-light text-gray-800 mb-3">Explore</h1>
+      <h1 class="text-3xl font-light text-neutral-800 mb-3">Explore</h1>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-8">
         <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden" v-for="room in rooms" :key="room['.key']">
           <div class="relative h-48 overflow-hidden">
@@ -28,11 +28,11 @@
             </div>
           </div>
           <div class="p-4">
-            <h3 class="font-semibold text-gray-800 text-lg mb-2 line-clamp-2">{{ room.title }}</h3>
+            <h3 class="font-semibold text-neutral-800 text-lg mb-2 line-clamp-2">{{ room.title }}</h3>
             <div class="flex items-center justify-between">
-              <div class="text-sm text-gray-600">
-                <span class="font-bold text-lg text-gray-900">${{ room.price }}</span>
-                <span class="text-gray-500"> / night</span>
+              <div class="text-sm text-neutral-600">
+                <span class="font-bold text-lg text-neutral-900">${{ room.price }}</span>
+                <span class="text-neutral-500"> / night</span>
               </div>
               <button class="bg-cyan-500 hover:bg-cyan-600 text-white text-xs font-medium px-3 py-1 rounded-full transition-colors duration-200">
                 View

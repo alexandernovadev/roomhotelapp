@@ -35,7 +35,7 @@
             <!-- Header del modal -->
             <div
               v-if="showHeader"
-              class="flex items-center justify-between p-6 border-b border-gray-100"
+              class="flex items-center justify-between p-6 border-b border-neutral-100"
               :class="headerClasses"
             >
               <div class="flex items-center space-x-3">
@@ -49,13 +49,13 @@
                 <div>
                   <h3
                     v-if="title"
-                    class="text-lg font-semibold text-gray-900"
+                    class="text-lg font-semibold text-neutral-900"
                   >
                     {{ title }}
                   </h3>
                   <p
                     v-if="subtitle"
-                    class="text-sm text-gray-500 mt-1"
+                    class="text-sm text-neutral-500 mt-1"
                   >
                     {{ subtitle }}
                   </p>

@@ -14,7 +14,7 @@
           <form @submit.prevent="save" class="space-y-8">
             <!-- Basic Information -->
             <div>
-              <h2 class="text-2xl font-semibold text-gray-800 mb-6">Información Básica</h2>
+              <h2 class="text-2xl font-semibold text-neutral-800 mb-6">Información Básica</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Input
                   v-model="publication.title"
@@ -38,7 +38,7 @@
 
             <!-- Location -->
             <div>
-              <h2 class="text-2xl font-semibold text-gray-800 mb-6">Ubicación</h2>
+              <h2 class="text-2xl font-semibold text-neutral-800 mb-6">Ubicación</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Input
                   v-model="publication.city"
@@ -62,7 +62,7 @@
 
             <!-- Pricing -->
             <div>
-              <h2 class="text-2xl font-semibold text-gray-800 mb-6">Precios</h2>
+              <h2 class="text-2xl font-semibold text-neutral-800 mb-6">Precios</h2>
               <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <Input
                   v-model="publication.price"
@@ -96,85 +96,85 @@
 
             <!-- Amenities -->
             <div>
-              <h2 class="text-2xl font-semibold text-gray-800 mb-6">Amenidades</h2>
+              <h2 class="text-2xl font-semibold text-neutral-800 mb-6">Amenidades</h2>
               <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <label class="flex items-center space-x-2 cursor-pointer">
                   <input
                     v-model="publication.amenities.wifi"
                     type="checkbox"
-                    class="rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                    class="rounded border-neutral-300 text-cyan-600 focus:ring-cyan-500"
                   />
-                  <span class="text-sm text-gray-700">WiFi</span>
+                  <span class="text-sm text-neutral-700">WiFi</span>
                 </label>
 
                 <label class="flex items-center space-x-2 cursor-pointer">
                   <input
                     v-model="publication.amenities.kitchen"
                     type="checkbox"
-                    class="rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                    class="rounded border-neutral-300 text-cyan-600 focus:ring-cyan-500"
                   />
-                  <span class="text-sm text-gray-700">Cocina</span>
+                  <span class="text-sm text-neutral-700">Cocina</span>
                 </label>
 
                 <label class="flex items-center space-x-2 cursor-pointer">
                   <input
                     v-model="publication.amenities.parking"
                     type="checkbox"
-                    class="rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                    class="rounded border-neutral-300 text-cyan-600 focus:ring-cyan-500"
                   />
-                  <span class="text-sm text-gray-700">Estacionamiento</span>
+                  <span class="text-sm text-neutral-700">Estacionamiento</span>
                 </label>
 
                 <label class="flex items-center space-x-2 cursor-pointer">
                   <input
                     v-model="publication.amenities.ac"
                     type="checkbox"
-                    class="rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                    class="rounded border-neutral-300 text-cyan-600 focus:ring-cyan-500"
                   />
-                  <span class="text-sm text-gray-700">Aire acondicionado</span>
+                  <span class="text-sm text-neutral-700">Aire acondicionado</span>
                 </label>
 
                 <label class="flex items-center space-x-2 cursor-pointer">
                   <input
                     v-model="publication.amenities.tv"
                     type="checkbox"
-                    class="rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                    class="rounded border-neutral-300 text-cyan-600 focus:ring-cyan-500"
                   />
-                  <span class="text-sm text-gray-700">TV</span>
+                  <span class="text-sm text-neutral-700">TV</span>
                 </label>
 
                 <label class="flex items-center space-x-2 cursor-pointer">
                   <input
                     v-model="publication.amenities.washer"
                     type="checkbox"
-                    class="rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                    class="rounded border-neutral-300 text-cyan-600 focus:ring-cyan-500"
                   />
-                  <span class="text-sm text-gray-700">Lavadora</span>
+                  <span class="text-sm text-neutral-700">Lavadora</span>
                 </label>
 
                 <label class="flex items-center space-x-2 cursor-pointer">
                   <input
                     v-model="publication.amenities.pool"
                     type="checkbox"
-                    class="rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                    class="rounded border-neutral-300 text-cyan-600 focus:ring-cyan-500"
                   />
-                  <span class="text-sm text-gray-700">Piscina</span>
+                  <span class="text-sm text-neutral-700">Piscina</span>
                 </label>
 
                 <label class="flex items-center space-x-2 cursor-pointer">
                   <input
                     v-model="publication.amenities.gym"
                     type="checkbox"
-                    class="rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                    class="rounded border-neutral-300 text-cyan-600 focus:ring-cyan-500"
                   />
-                  <span class="text-sm text-gray-700">Gimnasio</span>
+                  <span class="text-sm text-neutral-700">Gimnasio</span>
                 </label>
               </div>
             </div>
 
             <!-- Images -->
             <div>
-              <h2 class="text-2xl font-semibold text-gray-800 mb-6">Imágenes</h2>
+              <h2 class="text-2xl font-semibold text-neutral-800 mb-6">Imágenes</h2>
               <div class="space-y-4">
                 <Input
                   v-model="publication.featuredImage"
@@ -198,7 +198,7 @@
 
             <!-- Description -->
             <div>
-              <h2 class="text-2xl font-semibold text-gray-800 mb-6">Descripción</h2>
+              <h2 class="text-2xl font-semibold text-neutral-800 mb-6">Descripción</h2>
               <Textarea
                 v-model="publication.description"
                 label="Describe las características y amenidades de tu habitación"
@@ -213,7 +213,7 @@
             </div>
 
             <!-- Submit Buttons -->
-            <div class="flex items-center justify-end space-x-4 pt-6 border-t border-gray-100">
+            <div class="flex items-center justify-end space-x-4 pt-6 border-t border-neutral-100">
               <Button
                 type="button"
                 variant="secondary"

@@ -2,7 +2,7 @@
   <div class="flex items-center flex-shrink-0 mr-6">
     <router-link
       :to="{ name: ROUTES.HOME }"
-      class="text-black hover:text-gray-700 no-underline font-semibold text-lg flex items-center"
+      class="text-black hover:text-neutral-700 no-underline font-semibold text-lg flex items-center"
     >
       <img
         src="@/assets/logonew.png"

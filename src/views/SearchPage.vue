@@ -54,9 +54,9 @@
       <div class="flex flex-col lg:flex-row gap-8 max-w-7xl mx-auto">
         <!-- Filters Sidebar -->
         <aside class="lg:w-80 flex-shrink-0">
-          <div class="bg-white rounded-xl shadow-lg p-6 sticky top-4 border border-gray-100">
+          <div class="bg-white rounded-xl shadow-lg p-6 sticky top-4 border border-neutral-100">
             <div class="flex items-center justify-between mb-6">
-              <h3 class="text-xl font-bold text-gray-800">Filtros</h3>
+              <h3 class="text-xl font-bold text-neutral-800">Filtros</h3>
               <button
                 @click="clearFilters"
                 class="text-cyan-600 hover:text-cyan-700 text-sm font-medium"
@@ -67,129 +67,129 @@
 
             <!-- Price Range -->
             <div class="mb-8">
-              <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+              <h4 class="font-semibold text-neutral-800 mb-4 flex items-center">
                 <i class="material-icons text-cyan-600 mr-2 text-lg">attach_money</i>
                 Rango de Precio
               </h4>
               <div class="space-y-3">
-                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                <label class="flex items-center p-3 rounded-lg hover:bg-neutral-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.priceRange"
                     type="radio"
                     value="0-50000"
-                    class="w-4 h-4 text-cyan-600 border-gray-300 focus:ring-cyan-500"
+                    class="w-4 h-4 text-cyan-600 border-neutral-300 focus:ring-cyan-500"
                   />
-                  <span class="ml-3 text-gray-700">$0 - $50,000</span>
+                  <span class="ml-3 text-neutral-700">$0 - $50,000</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                <label class="flex items-center p-3 rounded-lg hover:bg-neutral-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.priceRange"
                     type="radio"
                     value="50000-100000"
-                    class="w-4 h-4 text-cyan-600 border-gray-300 focus:ring-cyan-500"
+                    class="w-4 h-4 text-cyan-600 border-neutral-300 focus:ring-cyan-500"
                   />
-                  <span class="ml-3 text-gray-700">$50,000 - $100,000</span>
+                  <span class="ml-3 text-neutral-700">$50,000 - $100,000</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                <label class="flex items-center p-3 rounded-lg hover:bg-neutral-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.priceRange"
                     type="radio"
                     value="100000-200000"
-                    class="w-4 h-4 text-cyan-600 border-gray-300 focus:ring-cyan-500"
+                    class="w-4 h-4 text-cyan-600 border-neutral-300 focus:ring-cyan-500"
                   />
-                  <span class="ml-3 text-gray-700">$100,000 - $200,000</span>
+                  <span class="ml-3 text-neutral-700">$100,000 - $200,000</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                <label class="flex items-center p-3 rounded-lg hover:bg-neutral-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.priceRange"
                     type="radio"
                     value="200000+"
-                    class="w-4 h-4 text-cyan-600 border-gray-300 focus:ring-cyan-500"
+                    class="w-4 h-4 text-cyan-600 border-neutral-300 focus:ring-cyan-500"
                   />
-                  <span class="ml-3 text-gray-700">$200,000+</span>
+                  <span class="ml-3 text-neutral-700">$200,000+</span>
                 </label>
               </div>
             </div>
 
             <!-- Room Type -->
             <div class="mb-8">
-              <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+              <h4 class="font-semibold text-neutral-800 mb-4 flex items-center">
                 <i class="material-icons text-cyan-600 mr-2 text-lg">home</i>
                 Tipo de Habitación
               </h4>
               <div class="space-y-3">
-                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                <label class="flex items-center p-3 rounded-lg hover:bg-neutral-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.roomTypes"
                     type="checkbox"
                     value="apartamento"
-                    class="w-4 h-4 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
+                    class="w-4 h-4 text-cyan-600 border-neutral-300 rounded focus:ring-cyan-500"
                   />
-                  <span class="ml-3 text-gray-700">Apartamento</span>
+                  <span class="ml-3 text-neutral-700">Apartamento</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                <label class="flex items-center p-3 rounded-lg hover:bg-neutral-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.roomTypes"
                     type="checkbox"
                     value="casa"
-                    class="w-4 h-4 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
+                    class="w-4 h-4 text-cyan-600 border-neutral-300 rounded focus:ring-cyan-500"
                   />
-                  <span class="ml-3 text-gray-700">Casa</span>
+                  <span class="ml-3 text-neutral-700">Casa</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                <label class="flex items-center p-3 rounded-lg hover:bg-neutral-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.roomTypes"
                     type="checkbox"
                     value="habitacion"
-                    class="w-4 h-4 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
+                    class="w-4 h-4 text-cyan-600 border-neutral-300 rounded focus:ring-cyan-500"
                   />
-                  <span class="ml-3 text-gray-700">Habitación Privada</span>
+                  <span class="ml-3 text-neutral-700">Habitación Privada</span>
                 </label>
               </div>
             </div>
 
             <!-- Amenities -->
             <div class="mb-8">
-              <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+              <h4 class="font-semibold text-neutral-800 mb-4 flex items-center">
                 <i class="material-icons text-cyan-600 mr-2 text-lg">star</i>
                 Amenidades
               </h4>
               <div class="space-y-3">
-                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                <label class="flex items-center p-3 rounded-lg hover:bg-neutral-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.amenities"
                     type="checkbox"
                     value="wifi"
-                    class="w-4 h-4 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
+                    class="w-4 h-4 text-cyan-600 border-neutral-300 rounded focus:ring-cyan-500"
                   />
-                  <span class="ml-3 text-gray-700">WiFi</span>
+                  <span class="ml-3 text-neutral-700">WiFi</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                <label class="flex items-center p-3 rounded-lg hover:bg-neutral-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.amenities"
                     type="checkbox"
                     value="kitchen"
-                    class="w-4 h-4 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
+                    class="w-4 h-4 text-cyan-600 border-neutral-300 rounded focus:ring-cyan-500"
                   />
-                  <span class="ml-3 text-gray-700">Cocina</span>
+                  <span class="ml-3 text-neutral-700">Cocina</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                <label class="flex items-center p-3 rounded-lg hover:bg-neutral-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.amenities"
                     type="checkbox"
                     value="parking"
-                    class="w-4 h-4 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
+                    class="w-4 h-4 text-cyan-600 border-neutral-300 rounded focus:ring-cyan-500"
                   />
-                  <span class="ml-3 text-gray-700">Estacionamiento</span>
+                  <span class="ml-3 text-neutral-700">Estacionamiento</span>
                 </label>
-                <label class="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                <label class="flex items-center p-3 rounded-lg hover:bg-neutral-50 cursor-pointer transition-colors">
                   <input
                     v-model="filters.amenities"
                     type="checkbox"
                     value="ac"
-                    class="w-4 h-4 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
+                    class="w-4 h-4 text-cyan-600 border-neutral-300 rounded focus:ring-cyan-500"
                   />
-                  <span class="ml-3 text-gray-700">Aire Acondicionado</span>
+                  <span class="ml-3 text-neutral-700">Aire Acondicionado</span>
                 </label>
               </div>
             </div>
@@ -199,12 +199,12 @@
         <!-- Results -->
         <main class="flex-1 min-w-0">
           <!-- Results Header -->
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 bg-white rounded-xl p-6 shadow-sm border border-neutral-100">
             <div class="mb-4 sm:mb-0">
-              <h2 class="text-2xl font-bold text-gray-800">
+              <h2 class="text-2xl font-bold text-neutral-800">
                 {{ filteredRooms.length }} habitaciones encontradas
               </h2>
-              <p class="text-gray-600 mt-1">
+              <p class="text-neutral-600 mt-1">
                 {{ searchQuery.location ? `en ${searchQuery.location}` : 'en todas las ubicaciones' }}
               </p>
             </div>

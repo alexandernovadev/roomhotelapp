@@ -63,9 +63,9 @@
             v-model="form.terms"
             type="checkbox"
             required
-            class="h-4 w-4 text-cyan-600 focus:ring-cyan-500 border-gray-300 rounded"
+            class="h-4 w-4 text-cyan-600 focus:ring-cyan-500 border-neutral-300 rounded"
           />
-          <label for="register-terms" class="ml-2 block text-sm text-gray-700">
+          <label for="register-terms" class="ml-2 block text-sm text-neutral-700">
             Acepto los <a href="#" class="text-cyan-600 hover:text-cyan-700 underline">términos y condiciones</a>
           </label>
         </div>
@@ -73,7 +73,7 @@
     </form>
 
     <!-- Botones del formulario -->
-    <div class="flex items-center justify-end space-x-3 pt-4 border-t border-gray-100">
+    <div class="flex items-center justify-end space-x-3 pt-4 border-t border-neutral-100">
       <Button
         variant="secondary"
         @click="$emit('cancel')"
