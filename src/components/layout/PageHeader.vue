@@ -1,6 +1,6 @@
 <template>
   <section class="bg-gradient-to-r from-cyan-600 to-cyan-700 py-8">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto pl-4 pr-4">
       <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
         <div class="flex-1 mb-6 lg:mb-0">
           <h1 class="text-3xl font-bold text-white">{{ title }}</h1>

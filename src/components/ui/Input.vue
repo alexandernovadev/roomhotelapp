@@ -135,29 +135,29 @@ export default {
     const labelClasses = computed(() => {
       return isDarkMode.value
         ? 'block text-sm font-medium text-white mb-1'
-        : 'block text-sm font-medium text-gray-700 mb-1'
+        : 'block text-sm font-medium text-neutral-700 mb-1'
     })
 
     const inputClasses = computed(() => {
       let baseClasses = 'w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-0 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed'
 
       if (isDarkMode.value) {
-        baseClasses += ' bg-white/90 border-white/40 text-gray-800 placeholder-gray-500'
+        baseClasses += ' bg-white/90 border-white/40 text-neutral-800 placeholder-neutral-500'
       } else {
-        baseClasses += ' bg-white text-gray-900 placeholder-gray-400'
+        baseClasses += ' bg-white text-neutral-900 placeholder-neutral-400'
       }
 
       const sizeClasses = {
-        sm: 'px-3 py-1.5 text-sm',
-        md: 'px-3 py-2 text-sm',
-        lg: 'px-4 py-3 text-base'
+        sm: 'pl-3 pr-3 py-1.5 text-sm',
+        md: 'pl-3 pr-3 py-2 text-sm',
+        lg: 'pl-4 pr-4 py-3 text-base'
       }
 
       const stateClasses = props.error
         ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
         : isDarkMode.value
           ? 'focus:border-white focus:ring-white'
-          : 'border-gray-300 focus:border-cyan-500 focus:ring-cyan-500'
+          : 'border-neutral-300 focus:border-cyan-500 focus:ring-cyan-500'
 
       const iconPadding = props.icon ? 'pl-10' : ''
       const errorPadding = props.error ? 'pr-10' : ''
@@ -166,11 +166,11 @@ export default {
     })
 
     const iconClasses = computed(() => {
-      return isDarkMode.value ? 'text-gray-600' : 'text-gray-400'
+      return isDarkMode.value ? 'text-neutral-600' : 'text-neutral-400'
     })
 
     const helpTextClasses = computed(() => {
-      return isDarkMode.value ? 'text-gray-200' : 'text-gray-500'
+      return isDarkMode.value ? 'text-neutral-200' : 'text-neutral-500'
     })
 
     const handleInput = (event) => {

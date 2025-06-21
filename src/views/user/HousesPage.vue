@@ -13,7 +13,7 @@
           </div>
           <router-link
             :to="{ name: 'CreateHomePage' }"
-            class="bg-white text-cyan-600 px-4 py-2 rounded-lg hover:bg-cyan-50 transition-colors duration-200 flex items-center space-x-2"
+            class="bg-white text-cyan-600 pl-4 pr-4 py-2 rounded-lg hover:bg-cyan-50 transition-colors duration-200 flex items-center space-x-2"
           >
             <i class="material-icons">add</i>
             <span>Nueva Habitación</span>
@@ -27,12 +27,12 @@
       <!-- Empty State -->
       <div v-if="userRooms.length === 0" class="text-center py-12">
         <div class="max-w-md mx-auto">
-          <i class="material-icons text-6xl text-gray-300 mb-4">home</i>
-          <h3 class="text-xl font-semibold text-gray-600 mb-2">No tienes habitaciones publicadas</h3>
-          <p class="text-gray-500 mb-6">Comienza compartiendo tu espacio con viajeros de todo el mundo</p>
+          <i class="material-icons text-6xl text-neutral-300 mb-4">home</i>
+          <h3 class="text-xl font-semibold text-neutral-600 mb-2">No tienes habitaciones publicadas</h3>
+          <p class="text-neutral-500 mb-6">Comienza compartiendo tu espacio con viajeros de todo el mundo</p>
           <router-link
             :to="{ name: 'CreateHomePage' }"
-            class="inline-flex items-center px-6 py-3 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors duration-200"
+            class="inline-flex items-center pl-6 pr-6 py-3 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors duration-200"
           >
             <i class="material-icons mr-2">add</i>
             Publicar Primera Habitación
@@ -55,12 +55,12 @@
               class="w-full h-full object-cover"
             />
             <div class="absolute top-3 right-3">
-              <span class="bg-cyan-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
+              <span class="bg-cyan-600 text-white pl-2 pr-2 py-1 rounded-full text-xs font-semibold">
                 {{ room.type || 'Habitación' }}
               </span>
             </div>
             <div class="absolute top-3 left-3">
-              <span class="bg-black bg-opacity-50 text-white px-2 py-1 rounded-full text-xs">
+              <span class="bg-black bg-opacity-50 text-white pl-2 pr-2 py-1 rounded-full text-xs">
                 ${{ formatPrice(room.price) }} {{ room.currency || 'COP' }}
               </span>
             </div>
@@ -68,16 +68,16 @@
 
           <!-- Room Content -->
           <div class="p-4">
-            <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">
+            <h3 class="font-semibold text-neutral-800 mb-2 line-clamp-2">
               {{ room.title }}
             </h3>
 
-            <p class="text-gray-600 text-sm mb-3 line-clamp-2">
+            <p class="text-neutral-600 text-sm mb-3 line-clamp-2">
               {{ room.description }}
             </p>
 
             <!-- Location -->
-            <div class="flex items-center text-gray-500 text-sm mb-3">
+            <div class="flex items-center text-neutral-500 text-sm mb-3">
               <i class="material-icons text-sm mr-1">location_on</i>
               <span>{{ room.city || 'Ubicación no especificada' }}</span>
             </div>
@@ -88,15 +88,15 @@
                 v-for="(value, key) in room.amenities"
                 :key="key"
                 v-show="value"
-                class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs"
+                class="bg-neutral-100 text-neutral-600 pl-2 pr-2 py-1 rounded text-xs"
               >
                 {{ getAmenityLabel(key) }}
               </span>
             </div>
 
             <!-- Actions -->
-            <div class="flex items-center justify-between pt-3 border-t border-gray-100">
-              <div class="text-xs text-gray-500">
+            <div class="flex items-center justify-between pt-3 border-t border-neutral-100">
+              <div class="text-xs text-neutral-500">
                 Publicado {{ formatDate(room.publishedAt) }}
               </div>
               <div class="flex items-center space-x-2">
@@ -123,7 +123,7 @@
       <!-- Stats Section -->
       <div v-if="userRooms.length > 0" class="mt-12">
         <div class="card p-6">
-          <h3 class="text-lg font-semibold text-gray-800 mb-4">Estadísticas</h3>
+          <h3 class="text-lg font-semibold text-neutral-800 mb-4">Estadísticas</h3>
           <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div class="text-center p-4 bg-cyan-50 rounded-lg">
               <div class="text-2xl font-bold text-cyan-600">{{ userRooms.length }}</div>

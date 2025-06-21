@@ -1,6 +1,6 @@
 <template>
   <footer class="bg-cyan-600 text-white">
-    <div class="container mx-auto px-4 py-12">
+    <div class="container mx-auto pl-4 pr-4 py-12">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <!-- Brand Section -->
         <div class="lg:col-span-2">
@@ -83,8 +83,8 @@
     </div>
 
     <!-- Copyright Section -->
-    <div class="border-t border-cyan-500 bg-gray-800">
-      <div class="container mx-auto px-4 py-4">
+    <div class="border-t border-cyan-500 bg-neutral-800">
+      <div class="container mx-auto pl-4 pr-4 py-4">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <p class="text-white text-sm mb-2 md:mb-0">
             © {{ currentYear }} Adventures App. All rights reserved.

@@ -16,13 +16,13 @@
     >
       <div
         v-if="isOpen"
-        class="absolute z-50 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-48"
+        class="absolute z-50 mt-2 bg-white rounded-lg shadow-xl border border-neutral-200 py-2 min-w-48"
         :class="positionClasses"
       >
         <!-- Header del dropdown (opcional) -->
         <div
           v-if="$slots.header"
-          class="px-4 py-3 border-b border-gray-100 bg-gray-50 rounded-t-lg"
+          class="pl-4 pr-4 py-3 border-b border-neutral-100 bg-neutral-50 rounded-t-lg"
         >
           <slot name="header" />
         </div>
@@ -35,7 +35,7 @@
         <!-- Footer del dropdown (opcional) -->
         <div
           v-if="$slots.footer"
-          class="px-4 py-3 border-t border-gray-100 bg-gray-50 rounded-b-lg"
+          class="pl-4 pr-4 py-3 border-t border-neutral-100 bg-neutral-50 rounded-b-lg"
         >
           <slot name="footer" />
         </div>

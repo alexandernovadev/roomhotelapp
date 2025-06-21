@@ -209,10 +209,10 @@
               </p>
             </div>
             <div class="flex items-center space-x-3">
-              <span class="text-sm font-medium text-gray-700">Ordenar por:</span>
+              <span class="text-sm font-medium text-neutral-700">Ordenar por:</span>
               <select
                 v-model="sortBy"
-                class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 bg-white"
+                class="border border-neutral-300 rounded-lg pl-4 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 bg-white"
               >
                 <option value="relevance">Relevancia</option>
                 <option value="price-low">Precio: Menor a Mayor</option>
@@ -223,12 +223,12 @@
           </div>
 
           <!-- Empty State -->
-          <div v-if="filteredRooms.length === 0" class="text-center py-16 bg-white rounded-xl shadow-sm border border-gray-100">
+          <div v-if="filteredRooms.length === 0" class="text-center py-16 bg-white rounded-xl shadow-sm border border-neutral-100">
             <div class="max-w-md mx-auto">
-              <i class="material-icons text-8xl text-gray-200 mb-6">search_off</i>
-              <h3 class="text-2xl font-bold text-gray-600 mb-3">No se encontraron habitaciones</h3>
-              <p class="text-gray-500 mb-8 text-lg">Intenta ajustar tus filtros o buscar en otra ubicación</p>
-              <Button @click="clearFilters" variant="primary" class="px-8 py-3">
+              <i class="material-icons text-8xl text-neutral-200 mb-6">search_off</i>
+              <h3 class="text-2xl font-bold text-neutral-600 mb-3">No se encontraron habitaciones</h3>
+              <p class="text-neutral-500 mb-8 text-lg">Intenta ajustar tus filtros o buscar en otra ubicación</p>
+              <Button @click="clearFilters" variant="primary" class="pl-8 pr-8 py-3">
                 Limpiar Filtros
               </Button>
             </div>
@@ -239,7 +239,7 @@
             <div
               v-for="room in filteredRooms"
               :key="room['.key']"
-              class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100"
+              class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-neutral-100"
             >
               <!-- Room Image -->
               <div class="relative h-56 overflow-hidden">
@@ -249,7 +249,7 @@
                   class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                 />
                 <div class="absolute top-4 left-4">
-                  <span class="bg-white bg-opacity-95 text-cyan-600 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
+                  <span class="bg-white bg-opacity-95 text-cyan-600 text-xs font-bold pl-3 pr-3 py-1.5 rounded-full shadow-sm">
                     {{ room.type || 'Habitación' }}
                   </span>
                 </div>
@@ -258,16 +258,16 @@
                     @click="toggleFavorite(room)"
                     class="bg-white bg-opacity-95 p-2.5 rounded-full hover:bg-opacity-100 transition-all duration-200 shadow-sm hover:shadow-md"
                   >
-                    <i class="material-icons text-lg" :class="isFavorite(room) ? 'text-red-500' : 'text-gray-400'">
+                    <i class="material-icons text-lg" :class="isFavorite(room) ? 'text-red-500' : 'text-neutral-400'">
                       {{ isFavorite(room) ? 'favorite' : 'favorite_border' }}
                     </i>
                   </button>
                 </div>
                 <div class="absolute bottom-4 left-4 right-4">
                   <div class="bg-white bg-opacity-95 rounded-lg p-3 shadow-sm">
-                    <div class="text-2xl font-bold text-gray-800">
+                    <div class="text-2xl font-bold text-neutral-800">
                       ${{ formatPrice(room.price) }}
-                      <span class="text-sm font-normal text-gray-500">/ noche</span>
+                      <span class="text-sm font-normal text-neutral-500">/ noche</span>
                     </div>
                   </div>
                 </div>
@@ -275,11 +275,11 @@
 
               <!-- Room Content -->
               <div class="p-6">
-                <h3 class="font-bold text-gray-800 text-xl mb-3 line-clamp-2">
+                <h3 class="font-bold text-neutral-800 text-xl mb-3 line-clamp-2">
                   {{ room.title }}
                 </h3>
 
-                <div class="flex items-center text-gray-500 mb-4">
+                <div class="flex items-center text-neutral-500 mb-4">
                   <i class="material-icons text-cyan-600 mr-2">location_on</i>
                   <span class="text-sm">{{ room.city || 'Ubicación no especificada' }}</span>
                 </div>
@@ -290,14 +290,14 @@
                     v-for="(value, key) in room.amenities"
                     :key="key"
                     v-show="value"
-                    class="bg-cyan-50 text-cyan-700 px-3 py-1.5 rounded-full text-xs font-medium"
+                    class="bg-cyan-50 text-cyan-700 pl-3 pr-3 py-1.5 rounded-full text-xs font-medium"
                   >
                     {{ getAmenityLabel(key) }}
                   </span>
                 </div>
 
-                <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <div class="text-sm text-gray-500">
+                <div class="flex items-center justify-between pt-4 border-t border-neutral-100">
+                  <div class="text-sm text-neutral-500">
                     <i class="material-icons text-sm mr-1">visibility</i>
                     {{ Math.floor(Math.random() * 100) + 50 }} vistas
                   </div>
@@ -305,7 +305,7 @@
                     variant="primary"
                     size="sm"
                     @click="viewRoom(room)"
-                    class="px-6 py-2"
+                    class="pl-6 pr-6 py-2"
                   >
                     Ver Detalles
                   </Button>
@@ -320,7 +320,7 @@
               @click="loadMore"
               variant="secondary"
               :loading="isLoadingMore"
-              class="px-8 py-3"
+              class="pl-8 pr-8 py-3"
             >
               {{ isLoadingMore ? 'Cargando...' : 'Cargar Más' }}
             </Button>

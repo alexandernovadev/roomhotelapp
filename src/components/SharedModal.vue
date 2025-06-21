@@ -66,7 +66,7 @@
               <button
                 v-if="showCloseButton"
                 @click="closeModal"
-                class="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors duration-200"
+                class="p-2 text-neutral-400 hover:text-neutral-600 hover:bg-neutral-100 rounded-full transition-colors duration-200"
                 :aria-label="closeButtonLabel"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,20 +83,20 @@
             <!-- Footer del modal -->
             <div
               v-if="$slots.footer || showDefaultFooter"
-              class="flex items-center justify-end space-x-3 p-6 border-t border-gray-100 bg-gray-50"
+              class="flex items-center justify-end space-x-3 p-6 border-t border-neutral-100 bg-neutral-50"
             >
               <slot name="footer">
                 <button
                   v-if="showCancelButton"
                   @click="handleCancel"
-                  class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
+                  class="pl-4 pr-4 py-2 text-sm font-medium text-neutral-700 bg-white border border-neutral-300 rounded-lg hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
                 >
                   {{ cancelButtonText }}
                 </button>
                 <button
                   v-if="showConfirmButton"
                   @click="handleConfirm"
-                  class="px-4 py-2 text-sm font-medium text-white bg-cyan-600 border border-transparent rounded-lg hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 transition-colors duration-200"
+                  class="pl-4 pr-4 py-2 text-sm font-medium text-white bg-cyan-600 border border-transparent rounded-lg hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 transition-colors duration-200"
                   :class="confirmButtonClasses"
                 >
                   {{ confirmButtonText }}
