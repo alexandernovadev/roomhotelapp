@@ -185,36 +185,31 @@
                   :error="errors.featuredImage"
                 />
 
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    Imágenes adicionales (una por línea)
-                  </label>
-                  <textarea
-                    v-model="publication.additionalImages"
-                    rows="4"
-                    class="input-field"
-                    placeholder="https://images.unsplash.com/photo-1&#10;https://images.unsplash.com/photo-2&#10;https://images.unsplash.com/photo-3"
-                  ></textarea>
-                </div>
+                <Textarea
+                  v-model="publication.additionalImages"
+                  label="Imágenes adicionales (una por línea)"
+                  placeholder="https://images.unsplash.com/photo-1&#10;https://images.unsplash.com/photo-2&#10;https://images.unsplash.com/photo-3"
+                  rows="4"
+                  icon="collections"
+                  :error="errors.additionalImages"
+                />
               </div>
             </div>
 
             <!-- Description -->
             <div>
               <h2 class="text-2xl font-semibold text-gray-800 mb-6">Descripción</h2>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  Describe las características y amenidades de tu habitación
-                </label>
-                <textarea
-                  v-model="publication.description"
-                  rows="6"
-                  class="input-field"
-                  placeholder="Describe tu espacio, las comodidades disponibles, las reglas de la casa, y cualquier información importante para los huéspedes..."
-                  required
-                ></textarea>
-                <p v-if="errors.description" class="mt-1 text-sm text-red-600">{{ errors.description }}</p>
-              </div>
+              <Textarea
+                v-model="publication.description"
+                label="Describe las características y amenidades de tu habitación"
+                placeholder="Describe tu espacio, las comodidades disponibles, las reglas de la casa, y cualquier información importante para los huéspedes..."
+                rows="6"
+                required
+                icon="description"
+                :error="errors.description"
+                maxlength="1000"
+                help-text="Mínimo 10 caracteres"
+              />
             </div>
 
             <!-- Submit Buttons -->
@@ -246,7 +241,7 @@
 import { reactive, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
-import { Input, Button } from '@/components/ui'
+import { Input, Button, Textarea } from '@/components/ui'
 import { PageHeader, PageContainer } from '@/components/layout'
 import PageLayout from '@/layouts/PageLayout.vue'
 import { useAmenities } from '@/composables/useAmenities'
@@ -259,7 +254,8 @@ export default {
     PageHeader,
     PageContainer,
     Input,
-    Button
+    Button,
+    Textarea
   },
   setup() {
     const store = useStore()

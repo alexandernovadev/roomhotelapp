@@ -18,7 +18,7 @@
   "devDependencies": {
     "@babel/core": "^7.27.4",
     "@babel/eslint-parser": "^7.24.8",
-    "@tailwindcss/postcss": "^0.0.1-alpha.1",
+    "@tailwindcss/postcss": "^4.1.10",
     "@vitejs/plugin-vue": "^5.2.4",
     "@vue/compiler-sfc": "^3.5.17",
     "@vue/eslint-config-airbnb": "^8.0.0",

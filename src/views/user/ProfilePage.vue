@@ -83,17 +83,15 @@
                 :error="errors.phone"
               />
 
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  Biografía
-                </label>
-                <textarea
-                  v-model="profile.bio"
-                  rows="4"
-                  class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
-                  placeholder="Cuéntanos sobre ti..."
-                ></textarea>
-              </div>
+              <Textarea
+                v-model="profile.bio"
+                label="Biografía"
+                placeholder="Cuéntanos sobre ti..."
+                rows="4"
+                icon="person_outline"
+                maxlength="500"
+                help-text="Máximo 500 caracteres"
+              />
 
               <div class="flex items-center justify-end space-x-4 pt-6 border-t border-gray-100">
                 <Button
@@ -124,7 +122,7 @@
 import { reactive, computed, watch, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
-import { Input, Button } from '@/components/ui'
+import { Input, Button, Textarea } from '@/components/ui'
 import { PageHeader, PageContainer } from '@/components/layout'
 import PageLayout from '@/layouts/PageLayout.vue'
 import { useForm } from '@/composables/useForm'
@@ -136,7 +134,8 @@ export default {
     PageHeader,
     PageContainer,
     Input,
-    Button
+    Button,
+    Textarea
   },
   setup() {
     const store = useStore()
@@ -147,7 +146,8 @@ export default {
       name: '',
       username: '',
       email: '',
-      phone: ''
+      phone: '',
+      bio: ''
     })
 
     // Validation rules
@@ -155,7 +155,8 @@ export default {
       name: { required: true, minLength: 2 },
       username: { required: true, minLength: 3 },
       email: { required: true, email: true },
-      phone: { required: false, pattern: /^[\+]?[1-9][\d]{0,15}$/, message: 'Número de teléfono inválido' }
+      phone: { required: false, pattern: /^[\+]?[1-9][\d]{0,15}$/, message: 'Número de teléfono inválido' },
+      bio: { required: false, maxLength: 500 }
     }
 
     const user = computed(() => store.getters.authUser)
@@ -171,6 +172,7 @@ export default {
         profile.username = newUser.username || ''
         profile.email = newUser.email || ''
         profile.phone = newUser.phone || ''
+        profile.bio = newUser.bio || ''
       }
     }, { immediate: true })
 
@@ -182,7 +184,8 @@ export default {
           name: profile.name,
           username: profile.username,
           email: profile.email,
-          phone: profile.phone
+          phone: profile.phone,
+          bio: profile.bio
         })
 
         // Show success message
@@ -200,6 +203,7 @@ export default {
         profile.username = user.value.username || ''
         profile.email = user.value.email || ''
         profile.phone = user.value.phone || ''
+        profile.bio = user.value.bio || ''
       }
     }
 
