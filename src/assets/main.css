@@ -6,9 +6,12 @@
 }
 
 body {
-  @apply bg-gray-100;
+  @apply bg-gray-200;
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
+}
+html{
+  @apply bg-gray-200;
 }
 
 .grid-container {
