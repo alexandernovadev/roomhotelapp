@@ -1,135 +1,139 @@
-import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  type User as FirebaseUser
-} from 'firebase/auth';
-import { ref as dbRef, set, get } from 'firebase/database';
-import { auth, db } from '@/firebase';
-import type { User, LoginCredentials, RegisterData } from '@/types';
+  type User as FirebaseUser,
+} from 'firebase/auth'
+import { ref as dbRef, set, get } from 'firebase/database'
+import { auth, db } from '@/firebase'
+import type { User, LoginCredentials, RegisterData } from '@/types'
 
 export const useAuthStore = defineStore('auth', () => {
   // State
-  const user = ref<User | null>(null);
-  const isLoading = ref(false);
-  const error = ref<string | null>(null);
+  const user = ref<User | null>(null)
+  const isLoading = ref(false)
+  const error = ref<string | null>(null)
 
   // Getters
-  const isAuthenticated = computed(() => !!user.value);
-  const userId = computed(() => user.value?.id || null);
+  const isAuthenticated = computed(() => !!user.value)
+  const userId = computed(() => user.value?.id || null)
 
   // Actions
   const login = async (credentials: LoginCredentials): Promise<boolean> => {
     try {
-      isLoading.value = true;
-      error.value = null;
+      isLoading.value = true
+      error.value = null
 
       const userCredential = await signInWithEmailAndPassword(
         auth,
         credentials.email,
         credentials.password
-      );
+      )
 
-      await fetchUser(userCredential.user.uid);
-      return true;
+      await fetchUser(userCredential.user.uid)
+      return true
     } catch (err) {
-      error.value = getAuthErrorMessage(err as any);
-      return false;
+      error.value = getAuthErrorMessage(err as any)
+      return false
     } finally {
-      isLoading.value = false;
+      isLoading.value = false
     }
-  };
+  }
 
   const register = async (userData: RegisterData): Promise<boolean> => {
     try {
-      isLoading.value = true;
-      error.value = null;
+      isLoading.value = true
+      error.value = null
 
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         userData.email,
         userData.password
-      );
+      )
 
       const newUser: User = {
         id: userCredential.user.uid,
         email: userData.email,
         name: userData.name,
         username: userData.email.split('@')[0],
-        avatar: userData.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(userData.name)}&background=0D9488&color=fff&size=128`,
+        avatar:
+          userData.avatar ||
+          `https://ui-avatars.com/api/?name=${encodeURIComponent(
+            userData.name
+          )}&background=0D9488&color=fff&size=128`,
         phone: userData.phone || '',
         bio: '',
         registeredAt: Math.floor(Date.now() / 1000),
         lastVisitAt: Math.floor(Date.now() / 1000),
-      };
+      }
 
       // Save user to database
-      await set(dbRef(db, `users/${userCredential.user.uid}`), newUser);
+      await set(dbRef(db, `users/${userCredential.user.uid}`), newUser)
 
-      user.value = newUser;
-      return true;
+      user.value = newUser
+      return true
     } catch (err) {
-      error.value = getAuthErrorMessage(err as any);
-      return false;
+      error.value = getAuthErrorMessage(err as any)
+      return false
     } finally {
-      isLoading.value = false;
+      isLoading.value = false
     }
-  };
+  }
 
   const logout = async (): Promise<void> => {
     try {
-      await signOut(auth);
-      user.value = null;
-      error.value = null;
+      await signOut(auth)
+      user.value = null
+      error.value = null
     } catch (err) {
-      error.value = 'Error al cerrar sesión';
+      error.value = 'Error al cerrar sesión'
     }
-  };
+  }
 
   const fetchUser = async (uid: string): Promise<void> => {
     try {
-      const userRef = dbRef(db, `users/${uid}`);
-      const snapshot = await get(userRef);
+      const userRef = dbRef(db, `users/${uid}`)
+      const snapshot = await get(userRef)
 
       if (snapshot.exists()) {
-        user.value = { id: uid, ...snapshot.val() } as User;
+        user.value = { id: uid, ...snapshot.val() } as User
       }
     } catch (err) {
-      console.error('Error fetching user:', err);
-      error.value = 'Error al cargar datos del usuario';
+      console.error('Error fetching user:', err)
+      error.value = 'Error al cargar datos del usuario'
     }
-  };
+  }
 
   const updateUser = async (updates: Partial<User>): Promise<boolean> => {
-    if (!user.value) return false;
+    if (!user.value) return false
 
     try {
-      const userRef = dbRef(db, `users/${user.value.id}`);
-      await set(userRef, { ...user.value, ...updates });
-      user.value = { ...user.value, ...updates };
-      return true;
+      const userRef = dbRef(db, `users/${user.value.id}`)
+      await set(userRef, { ...user.value, ...updates })
+      user.value = { ...user.value, ...updates }
+      return true
     } catch (err) {
-      error.value = 'Error al actualizar usuario';
-      return false;
+      error.value = 'Error al actualizar usuario'
+      return false
     }
-  };
+  }
 
   const initializeAuth = (): void => {
     onAuthStateChanged(auth, async (firebaseUser: FirebaseUser | null) => {
       if (firebaseUser) {
-        await fetchUser(firebaseUser.uid);
+        await fetchUser(firebaseUser.uid)
       } else {
-        user.value = null;
+        user.value = null
       }
-    });
-  };
+    })
+  }
 
   const clearError = (): void => {
-    error.value = null;
-  };
+    error.value = null
+  }
 
   // Helper function for error messages
   const getAuthErrorMessage = (error: any): string => {
@@ -144,10 +148,10 @@ export const useAuthStore = defineStore('auth', () => {
       'auth/user-disabled': 'Esta cuenta ha sido deshabilitada',
       'auth/operation-not-allowed': 'Operación no permitida',
       'auth/invalid-credential': 'Credenciales inválidas',
-    };
+    }
 
-    return errorMessages[error.code] || 'Error de autenticación';
-  };
+    return errorMessages[error.code] || 'Error de autenticación'
+  }
 
   return {
     // State
@@ -167,5 +171,5 @@ export const useAuthStore = defineStore('auth', () => {
     updateUser,
     initializeAuth,
     clearError,
-  };
-});
+  }
+})

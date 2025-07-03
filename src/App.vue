@@ -1,19 +1,31 @@
 <template>
   <div id="app">
-    <Layout
+    <!-- Public Layout for non-authenticated users -->
+    <PublicLayout
+      v-if="!isAuthenticated"
       :user="user"
       :is-authenticated="isAuthenticated"
       @toggle-search="handleToggleSearch"
       @logout="handleLogout"
     >
       <router-view />
-    </Layout>
+    </PublicLayout>
+
+    <!-- Dashboard Layout for authenticated users -->
+    <DashboardLayout
+      v-else
+      :user="user"
+      @logout="handleLogout"
+    >
+      <router-view />
+    </DashboardLayout>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import Layout from '@/components/layout/Layout.vue';
+import PublicLayout from '@/components/layout/PublicLayout.vue';
+import DashboardLayout from '@/components/layout/DashboardLayout.vue';
 import type { User } from '@/types';
 
 // State (KISS - simple state management)
