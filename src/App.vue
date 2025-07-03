@@ -1,31 +1,24 @@
 <template>
   <div id="app">
-    <!-- <button @click="handleToggle">Toogle</button>
-    <ModalJsx :show="show" message="HOla" /> -->
-    <router-view />
-    <NotificationContainer />
+    <h1>Hello World</h1>
   </div>
 </template>
 
-<script>
-// import ModalJsx from "./render-functions/ModalJsx.vue";
-import NotificationContainer from './components/NotificationContainer.vue'
-
-export default {
-  data() {
-    return {
-      show: false,
-    }
-  },
-  components: {
-    NotificationContainer,
-  },
-  methods: {
-    handleToggle() {
-      this.show = !this.show
-    },
-  },
-}
+<script setup lang="ts">
+// Simple TypeScript setup
 </script>
-<style lang="postcss" src="./assets/tailwind.postcss"></style>
-<style lang="css" src="./assets/main.css"></style>
+
+<style scoped>
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #333;
+}
+</style>
