@@ -1,55 +1,402 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+/*---break--- */
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --grid-layout-gap: 15px;
-  --font-family: 'Roboto', sans-serif;
+  /* ============================================================================
+     PROFESSIONAL VIBRANT THEME - ROOMHOTEL APP
+     ============================================================================ */
+  
+  /* Refined Color Palette - Professional but Vibrant */
+  --color-coral: 255 107 107;      /* #FF6B6B - Primary (refined) */
+  --color-turquoise: 78 205 196;   /* #4ECDC4 - Secondary (elegant) */
+  --color-sky-blue: 69 183 209;    /* #45B7D1 - Accent (professional) */
+  --color-mint: 150 206 180;       /* #96CEB4 - Success (soft) */
+  --color-yellow: 255 234 167;     /* #FFEAA7 - Warning (gentle) */
+  --color-lavender: 221 160 221;   /* #DDA0DD - Danger (refined) */
+  --color-purple: 147 112 219;     /* #9370DB - Purple (elegant) */
+  --color-orange: 255 165 0;       /* #FFA500 - Orange (vibrant) */
+  
+  /* Professional Gradients - More Subtle */
+  --gradient-primary: linear-gradient(135deg, rgb(255 107 107), rgb(255 142 142));
+  --gradient-secondary: linear-gradient(135deg, rgb(78 205 196), rgb(68 160 141));
+  --gradient-accent: linear-gradient(135deg, rgb(69 183 209), rgb(150 201 61));
+  --gradient-hero: linear-gradient(135deg, rgb(255 107 107), rgb(147 112 219), rgb(78 205 196));
+  
+  /* Professional Dark Gradients */
+  --gradient-dark: linear-gradient(135deg, rgb(15 23 42), rgb(30 41 59));
+  --gradient-card: linear-gradient(135deg, rgba(255 255 255 0.1), rgba(255 255 255 0.05));
+  --gradient-overlay: linear-gradient(135deg, rgba(0 0 0 0.3), rgba(0 0 0 0.1));
+
+  /* Theme Variables */
+  --radius: 0.75rem;
+  --font-family: 'Inter', 'Roboto', sans-serif;
+  
+  /* Professional Background Colors */
+  --background: 255 255 255;
+  --foreground: 15 23 42;
+  
+  /* Card Colors */
+  --card: 255 255 255;
+  --card-foreground: 15 23 42;
+  
+  /* Popover Colors */
+  --popover: 255 255 255;
+  --popover-foreground: 15 23 42;
+  
+  /* Primary Colors (Coral) */
+  --primary: var(--color-coral);
+  --primary-foreground: 255 255 255;
+  
+  /* Secondary Colors (Turquoise) */
+  --secondary: var(--color-turquoise);
+  --secondary-foreground: 15 23 42;
+  
+  /* Accent Colors (Sky Blue) */
+  --accent: var(--color-sky-blue);
+  --accent-foreground: 255 255 255;
+  
+  /* Muted Colors */
+  --muted: 248 250 252;
+  --muted-foreground: 100 116 139;
+  
+  /* Destructive Colors (Lavender) */
+  --destructive: var(--color-lavender);
+  --destructive-foreground: 15 23 42;
+  
+  /* Border Colors */
+  --border: 226 232 240;
+  --input: 226 232 240;
+  --ring: var(--color-coral);
+  
+  /* Chart Colors */
+  --chart-1: var(--color-coral);
+  --chart-2: var(--color-turquoise);
+  --chart-3: var(--color-sky-blue);
+  --chart-4: var(--color-mint);
+  --chart-5: var(--color-yellow);
+  
+  /* Sidebar Colors */
+  --sidebar: 255 255 255;
+  --sidebar-foreground: 15 23 42;
+  --sidebar-primary: var(--color-coral);
+  --sidebar-primary-foreground: 255 255 255;
+  --sidebar-accent: var(--color-turquoise);
+  --sidebar-accent-foreground: 15 23 42;
+  --sidebar-border: 226 232 240;
+  --sidebar-ring: var(--color-coral);
 }
 
-body {
-  @apply bg-gray-200;
-  font-family: var(--font-family);
-  -webkit-font-smoothing: antialiased;
-}
-html{
-  @apply bg-gray-200;
+/* ============================================================================
+   REFINED ANIMATIONS & KEYFRAMES
+   ============================================================================ */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
 }
 
-.grid-container {
-  display: grid;
-  grid-column-gap: var(--grid-layout-gap);
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 107, 107, 0.2); }
+  50% { box-shadow: 0 0 25px rgba(255, 107, 107, 0.4); }
 }
 
-.input__search,
-.input__field {
-  @apply shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
-  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.input__label {
-  @apply block text-gray-700 text-xs font-bold mb-2 uppercase;
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
-/** Buttons */
-.btn {
-  @apply bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-300 rounded;
+@keyframes scale-in {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
-.btn:hover {
-  @apply bg-gray-100;
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.btn__outline {
-  @apply bg-transparent font-semibold py-2 px-4 border rounded;
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
-.btn__outline:hover {
-  @apply border-transparent;
+@keyframes border-glow {
+  0%, 100% { border-color: rgba(255, 107, 107, 0.3); }
+  50% { border-color: rgba(255, 107, 107, 0.6); }
 }
 
-.btn__outline.btn__outline--cyan {
-  @apply text-cyan-600 border-cyan-500;
+/* ============================================================================
+   PROFESSIONAL UTILITY CLASSES
+   ============================================================================ */
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
 }
 
-.btn__outline.btn__outline--cyan:hover {
-  @apply bg-cyan-500 text-white;
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.6s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.7s ease-out;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-border-glow {
+  animation: border-glow 2s ease-in-out infinite;
+}
+
+/* ============================================================================
+   PROFESSIONAL GRADIENT BACKGROUNDS
+   ============================================================================ */
+
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-secondary {
+  background: var(--gradient-secondary);
+}
+
+.bg-gradient-accent {
+  background: var(--gradient-accent);
+}
+
+.bg-gradient-hero {
+  background: var(--gradient-hero);
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+.bg-gradient-dark {
+  background: var(--gradient-dark);
+}
+
+.bg-gradient-card {
+  background: var(--gradient-card);
+}
+
+.bg-gradient-overlay {
+  background: var(--gradient-overlay);
+}
+
+/* ============================================================================
+   PROFESSIONAL COMPONENT STYLES
+   ============================================================================ */
+
+/* Refined Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Professional Floating Cards */
+.card-float {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-float:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Professional Buttons */
+.btn-professional {
+  background: linear-gradient(135deg, rgb(255 107 107), rgb(255 142 142));
+  border: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-professional:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+}
+
+.btn-professional::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-professional:hover::before {
+  left: 100%;
+}
+
+/* Professional Inputs */
+.input-professional {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.input-professional:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 107, 107, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+/* Mobile-First Responsive */
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none;
+  }
+  
+  .mobile-full {
+    width: 100%;
+  }
+  
+  .glass {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+  }
+}
+
+/* ============================================================================
+   TAILWIND THEME CONFIGURATION
+   ============================================================================ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/*---break--- */
+
+/* ============================================================================
+   DARK MODE (Future Enhancement)
+   ============================================================================ */
+
+.dark {
+  --background: 15 23 42;
+  --foreground: 248 250 252;
+  --card: 30 41 59;
+  --card-foreground: 248 250 252;
+  --popover: 30 41 59;
+  --popover-foreground: 248 250 252;
+  --primary: var(--color-coral);
+  --primary-foreground: 15 23 42;
+  --secondary: var(--color-turquoise);
+  --secondary-foreground: 15 23 42;
+  --muted: 51 65 85;
+  --muted-foreground: 148 163 184;
+  --accent: var(--color-sky-blue);
+  --accent-foreground: 15 23 42;
+  --destructive: var(--color-lavender);
+  --border: 51 65 85;
+  --input: 51 65 85;
+  --ring: var(--color-coral);
+}
+
+/*---break--- */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Professional Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(248, 250, 252, 0.1);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, rgb(255 107 107), rgb(78 205 196));
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgb(255 142 142), rgb(68 160 141));
+  }
 }
